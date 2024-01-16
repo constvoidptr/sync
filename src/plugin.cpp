@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+/// Filter out aircraft that are not on the ground at the specified airport.
+/// Returns true if we should keep the aircraft, false otherwise.
 bool filter(const std::string& airport, const EuroScopePlugIn::CFlightPlan& flight_plan) {
     auto flight_plan_data = flight_plan.GetFlightPlanData();
     if (flight_plan_data.GetOrigin() != airport)
@@ -54,7 +56,7 @@ Plugin::Plugin() : EuroScopePlugIn::CPlugIn(EuroScopePlugIn::COMPATIBILITY_CODE,
 }
 
 void Plugin::println(const std::string& msg) {
-    DisplayUserMessage(PLUGIN_NAME.c_str(), PLUGIN_NAME.c_str(), msg.c_str(), true, false, false, false, false);
+    DisplayUserMessage(PLUGIN_NAME.c_str(), PLUGIN_NAME.c_str(), msg.c_str(), true, true, false, false, false);
 }
 
 bool Plugin::OnCompileCommand(const char* sCommandLine) {

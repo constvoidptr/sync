@@ -76,25 +76,35 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
     if (airport.size() != 4)
         return false;
 
+    uint32_t num_synced = 0;
     for (EuroScopePlugIn::CFlightPlan flight_plan = FlightPlanSelectFirst(); flight_plan.IsValid(); flight_plan = FlightPlanSelectNext(
             flight_plan)) {
 
         if (!filter(airport, flight_plan))
             continue;
 
-        println(std::format("Syncing: {}, got clearance: {}, with ground state: {}", flight_plan.GetCallsign(),
-                            flight_plan.GetClearenceFlag(), flight_plan.GetGroundState()));
+        bool modified = false;
+        auto assigned = flight_plan.GetControllerAssignedData();
+        auto cached_scratch_pad = assigned.GetScratchPadString();
+
+        if (flight_plan.GetClearenceFlag()) {
+            assigned.SetScratchPadString("CLEA");
+            modified = true;
+        }
+
+        auto status = this->status.find(flight_plan.GetCallsign());
+        if (status != this->status.end()) {
+            assigned.SetScratchPadString(status::to_string(status->second).c_str());
+            modified = true;
+        }
+
+        if (modified) {
+            assigned.SetScratchPadString(cached_scratch_pad);
+            num_synced += 1;
+        }
     }
 
-
-    /*
-    auto assigned = fp.GetControllerAssignedData();
-    this->println(std::format("Setting clearance flag for: {}", fp.GetCallsign()));
-    auto old = assigned.GetScratchPadString();
-    this->println(std::format("Old: {}", old));
-    assigned.SetScratchPadString("CLEA");
-    assigned.SetScratchPadString(old);
-    */
+    println(std::format("Synced {} aircraft in {}", num_synced, airport));
 
     return true;
 }
@@ -115,6 +125,11 @@ void Plugin::OnFlightPlanControllerAssignedDataUpdate(EuroScopePlugIn::CFlightPl
     }
 
     if (std::optional<Status> s = parsed_status) {
-        println(std::format("New status: {} for: {}", status::to_string(*s), FlightPlan.GetCallsign()));
+        if (*s == Status::NoState) {
+            this->status.erase(FlightPlan.GetCallsign());
+            return;
+        }
+
+        this->status.insert_or_assign(FlightPlan.GetCallsign(), *s);
     }
 }

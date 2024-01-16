@@ -17,12 +17,12 @@ namespace status {
         switch (status) {
             case Status::NoState: return "NOSTATE";
             case Status::OnFreq: return "ONFREQ";
-            case Status::Stby: return "STBY";
-            case Status::Stup: return "STUP";
+            case Status::Stby: return "DE-ICE";
+            case Status::Stup: return "ST-UP";
             case Status::Push: return "PUSH";
             case Status::Taxi: return "TAXI";
             case Status::Lineup: return "LINEUP";
-            case Status::Takeoff: return "TAKEOFF";
+            case Status::Takeoff: return "DEPA";
         }
 
         return "UNKNOWN";

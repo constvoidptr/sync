@@ -17,7 +17,7 @@ bool filter(const std::string& airport, const EuroScopePlugIn::CFlightPlan& flig
     if (flight_plan_data.GetOrigin() != airport)
         return false;
 
-    if (flight_plan.GetDistanceFromOrigin() > 2.5)
+    if (flight_plan.GetDistanceFromOrigin() > 5.0)
         return false;
 
     // Check ground speed less than 60 knots
@@ -88,6 +88,12 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
         return true;
     }
 
+    if (args[1] == "clear") {
+        println("Clearing out stored statuses.");
+        this->status.clear();
+        return true;
+    }
+
     std::string airport = args[1];
     if (airport.size() != 4)
         return false;
@@ -126,6 +132,7 @@ void Plugin::OnFlightPlanControllerAssignedDataUpdate(EuroScopePlugIn::CFlightPl
 }
 
 void Plugin::OnFlightPlanDisconnect(EuroScopePlugIn::CFlightPlan FlightPlan) {
+    // Remove the status of the aircraft when it disconnects or is out of range.
     this->status.erase(FlightPlan.GetCallsign());
 }
 

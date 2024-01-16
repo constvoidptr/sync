@@ -83,10 +83,15 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
         return true;
     }
 
+    if (args[1] == "debug") {
+        println(std::format("Number of stored statuses: {}", this->status.size()));
+        return true;
+    }
+
     std::string airport = args[1];
-    std::transform(airport.begin(), airport.end(), airport.begin(), ::toupper);
     if (airport.size() != 4)
         return false;
+    std::transform(airport.begin(), airport.end(), airport.begin(), ::toupper);
 
     uint32_t num_synced = 0;
     for (EuroScopePlugIn::CFlightPlan flight_plan = FlightPlanSelectFirst(); flight_plan.IsValid(); flight_plan = FlightPlanSelectNext(

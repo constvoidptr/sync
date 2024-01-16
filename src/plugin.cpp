@@ -93,33 +93,7 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
         return false;
     std::transform(airport.begin(), airport.end(), airport.begin(), ::toupper);
 
-    uint32_t num_synced = 0;
-    for (EuroScopePlugIn::CFlightPlan flight_plan = FlightPlanSelectFirst(); flight_plan.IsValid(); flight_plan = FlightPlanSelectNext(
-            flight_plan)) {
-
-        if (!filter(airport, flight_plan))
-            continue;
-
-        bool modified = false;
-        auto assigned = flight_plan.GetControllerAssignedData();
-        auto cached_scratch_pad = assigned.GetScratchPadString();
-
-        if (flight_plan.GetClearenceFlag()) {
-            assigned.SetScratchPadString("CLEA");
-            modified = true;
-        }
-
-        auto status = this->status.find(flight_plan.GetCallsign());
-        if (status != this->status.end()) {
-            assigned.SetScratchPadString(status::to_string(status->second).c_str());
-            modified = true;
-        }
-
-        if (modified) {
-            assigned.SetScratchPadString(cached_scratch_pad);
-            num_synced += 1;
-        }
-    }
+    uint32_t num_synced = sync(airport);
 
     println(std::format("Synced {} aircraft in {}", num_synced, airport));
 
@@ -153,4 +127,36 @@ void Plugin::OnFlightPlanControllerAssignedDataUpdate(EuroScopePlugIn::CFlightPl
 
 void Plugin::OnFlightPlanDisconnect(EuroScopePlugIn::CFlightPlan FlightPlan) {
     this->status.erase(FlightPlan.GetCallsign());
+}
+
+uint32_t Plugin::sync(const std::string& airport) {
+    uint32_t num_synced = 0;
+    for (EuroScopePlugIn::CFlightPlan flight_plan = FlightPlanSelectFirst(); flight_plan.IsValid(); flight_plan = FlightPlanSelectNext(
+            flight_plan)) {
+
+        if (!filter(airport, flight_plan))
+            continue;
+
+        bool modified = false;
+        auto assigned = flight_plan.GetControllerAssignedData();
+        auto cached_scratch_pad = assigned.GetScratchPadString();
+
+        if (flight_plan.GetClearenceFlag()) {
+            assigned.SetScratchPadString("CLEA");
+            modified = true;
+        }
+
+        auto status = this->status.find(flight_plan.GetCallsign());
+        if (status != this->status.end()) {
+            assigned.SetScratchPadString(status::to_string(status->second).c_str());
+            modified = true;
+        }
+
+        if (modified) {
+            assigned.SetScratchPadString(cached_scratch_pad);
+            num_synced += 1;
+        }
+    }
+
+    return num_synced;
 }

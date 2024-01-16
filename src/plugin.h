@@ -32,6 +32,10 @@ private:
 
     void OnFlightPlanDisconnect(EuroScopePlugIn::CFlightPlan FlightPlan) override;
 
+    /// Sync all aircraft at a given airport.
+    /// Returns the number of aircraft synced.
+    uint32_t sync(const std::string& airport);
+
     /// The GroundRadar plugin states are not being tracked by EuroScope, so we need to keep track of them ourselves.
     std::unordered_map<std::string, status::Status> status;
 };

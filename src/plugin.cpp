@@ -7,6 +7,9 @@
 #include <string>
 #include <vector>
 
+const char* ABOUT_MSG = "Synchronize the Departure List with other controllers.";
+const char* HELP_MSG = "Usage: .sync <Airport ICAO> (e.g. .sync LOWW).";
+
 /// Filter out aircraft that are not on the ground at the specified airport.
 /// Returns true if we should keep the aircraft, false otherwise.
 bool filter(const std::string& airport, const EuroScopePlugIn::CFlightPlan& flight_plan) {
@@ -53,6 +56,8 @@ Plugin::Plugin() : EuroScopePlugIn::CPlugIn(EuroScopePlugIn::COMPATIBILITY_CODE,
                                             PLUGIN_VERSION.c_str(),
                                             PLUGIN_AUTHOR.c_str(),
                                             PLUGIN_COPYRIGHT.c_str()) {
+    println(ABOUT_MSG);
+    println(HELP_MSG);
 }
 
 void Plugin::println(const std::string& msg) {
@@ -72,6 +77,11 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
 
     if (args[0] != ".sync")
         return false;
+
+    if (args[1] == "help") {
+        println(HELP_MSG);
+        return true;
+    }
 
     std::string airport = args[1];
     std::transform(airport.begin(), airport.end(), airport.begin(), ::toupper);

@@ -13,8 +13,6 @@ list(SORT ALL_SRC)
 
 include_directories(Sync PUBLIC "${CMAKE_SOURCE_DIR}/vendor/include")
 
-#add_definitions(-D_AFXDLL)
-
 add_library(Sync SHARED ${ALL_SRC})
 
 target_link_libraries(Sync PRIVATE "${CMAKE_SOURCE_DIR}/vendor/lib/EuroScopePlugInDll.lib")

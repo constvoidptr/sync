@@ -7,9 +7,9 @@
 #include "status.h"
 
 const std::string PLUGIN_NAME = "Sync";
-const std::string PLUGIN_VERSION = "0.0.1";
+const std::string PLUGIN_VERSION = "1.0.0";
 const std::string PLUGIN_AUTHOR = "constvoidptr";
-const std::string PLUGIN_COPYRIGHT = "MIT";
+const std::string PLUGIN_COPYRIGHT = "(c) 2023-2024, MIT License";
 
 class Plugin : public EuroScopePlugIn::CPlugIn {
 public:

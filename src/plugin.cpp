@@ -145,3 +145,7 @@ void Plugin::OnFlightPlanControllerAssignedDataUpdate(EuroScopePlugIn::CFlightPl
         this->status.insert_or_assign(FlightPlan.GetCallsign(), *s);
     }
 }
+
+void Plugin::OnFlightPlanDisconnect(EuroScopePlugIn::CFlightPlan FlightPlan) {
+    this->status.erase(FlightPlan.GetCallsign());
+}

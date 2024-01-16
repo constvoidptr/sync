@@ -2,6 +2,9 @@
 
 #include <euroscope/EuroScopePlugIn.h>
 #include <string>
+#include <unordered_map>
+
+#include "status.h"
 
 const std::string PLUGIN_NAME = "Sync";
 const std::string PLUGIN_VERSION = "0.0.1";
@@ -23,6 +26,10 @@ public:
 private:
     Plugin();
 
-public:
     bool OnCompileCommand(const char* sCommandLine) override;
+
+    void OnFlightPlanControllerAssignedDataUpdate(EuroScopePlugIn::CFlightPlan FlightPlan, int DataType) override;
+
+    /// Custom Ground Radar states that are not part of EuroScope, so we need to keep track of them ourselves.
+    std::unordered_map<std::string, status::Status> status;
 };

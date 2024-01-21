@@ -284,15 +284,15 @@ namespace EuroScopePlugIn {
 
         //---CPosition-----------------------------------------------------
 
-        inline CPosition(void) {
+        CPosition() {
             m_Latitude = m_Longitude = 0.0;
         };
 
 
         //---LoadFromStrings-----------------------------------------------
 
-        bool LoadFromStrings(const char *sLongitude,
-                             const char *sLatitude);
+        bool LoadFromStrings(const char* sLongitude,
+                             const char* sLatitude);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sLongitude  - longitude value
@@ -345,14 +345,14 @@ namespace EuroScopePlugIn {
 
         //---CFlightPlanExtractedRoute---------------------------------------
 
-        inline CFlightPlanExtractedRoute(void) {
-            m_FpPosition = NULL;
+        CFlightPlanExtractedRoute() {
+            m_FpPosition = nullptr;
         };
 
 
         //---GetPointsNumber-----------------------------------------------
 
-        int GetPointsNumber(void) const;
+        int GetPointsNumber() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The number of points in the extracted route array.
@@ -361,7 +361,7 @@ namespace EuroScopePlugIn {
 
         //---GetPointsCalculatedIndex--------------------------------------
 
-        int GetPointsCalculatedIndex(void) const;
+        int GetPointsCalculatedIndex() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The index of point in the extracted route that edge is the
@@ -373,7 +373,7 @@ namespace EuroScopePlugIn {
 
         //---GetPointsAssignedIndex----------------------------------------
 
-        int GetPointsAssignedIndex(void) const;
+        int GetPointsAssignedIndex() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The index of point in the extracted route that was assigned
@@ -385,7 +385,7 @@ namespace EuroScopePlugIn {
 
         //---GetPointName--------------------------------------------------
 
-        const char *GetPointName(int Index) const;
+        const char* GetPointName(int Index) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  Index   - the index of the requested point. It must be
@@ -411,7 +411,7 @@ namespace EuroScopePlugIn {
 
         //---GetPointAirwayName--------------------------------------------
 
-        const char *GetPointAirwayName(int Index) const;
+        const char* GetPointAirwayName(int Index) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  Index   - the index of the requested point. It must be
@@ -481,14 +481,14 @@ namespace EuroScopePlugIn {
 
         //---CFlightPlanPositionPredictions----------------------------------
 
-        inline CFlightPlanPositionPredictions(void) {
-            m_FpPosition = NULL;
+        CFlightPlanPositionPredictions() {
+            m_FpPosition = nullptr;
         };
 
 
         //---GetPointsNumber-----------------------------------------------
 
-        int GetPointsNumber(void) const;
+        int GetPointsNumber() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The number of points in the prediction array.
@@ -527,7 +527,7 @@ namespace EuroScopePlugIn {
 
         //---GetControllerId-----------------------------------------------
 
-        const char *GetControllerId(int Index) const;
+        const char* GetControllerId(int Index) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  Index   - the index of the requested point. It must be
@@ -556,15 +556,15 @@ namespace EuroScopePlugIn {
 
         //---CRadarTargetPositionData-----------------------------------------
 
-        inline CRadarTargetPositionData(void) {
-            m_RtPosition = m_PosPosition = NULL;
+        CRadarTargetPositionData() {
+            m_RtPosition = m_PosPosition = nullptr;
         };
 
 
         //---IsValid-------------------------------------------------------
 
-        inline bool IsValid(void) const {
-            return m_RtPosition != NULL;
+        bool IsValid() const {
+            return m_RtPosition != nullptr;
         };
         //-----------------------------------------------------------------
         //  Return :
@@ -578,8 +578,8 @@ namespace EuroScopePlugIn {
 
         //---IsFPTrackPosition---------------------------------------------
 
-        inline bool IsFPTrackPosition(void) const {
-            return m_PosPosition == NULL;
+        bool IsFPTrackPosition() const {
+            return m_PosPosition == nullptr;
         };
         //-----------------------------------------------------------------
         //  Return :
@@ -590,7 +590,7 @@ namespace EuroScopePlugIn {
 
         //---GetReceivedTime-----------------------------------------------
 
-        int GetReceivedTime(void) const;
+        int GetReceivedTime() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The number of seconds elapsed since the position data received.
@@ -599,7 +599,7 @@ namespace EuroScopePlugIn {
 
         //---GetPosition---------------------------------------------------
 
-        CPosition GetPosition(void) const;
+        CPosition GetPosition() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The lat/lon coordinates of the plane.
@@ -608,7 +608,7 @@ namespace EuroScopePlugIn {
 
         //---GetSquawk-----------------------------------------------------
 
-        const char *GetSquawk(void) const;
+        const char* GetSquawk() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The squawk sent by the pilot
@@ -617,7 +617,7 @@ namespace EuroScopePlugIn {
 
         //---GetTransponderC------------------------------------------------
 
-        bool GetTransponderC(void) const;
+        bool GetTransponderC() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if the plane transponder is C mode
@@ -627,7 +627,7 @@ namespace EuroScopePlugIn {
 
         //---GetTransponderI------------------------------------------------
 
-        bool GetTransponderI(void) const;
+        bool GetTransponderI() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if the plane transponder is IDENT mode
@@ -637,7 +637,7 @@ namespace EuroScopePlugIn {
 
         //---GetPressureAltitude-------------------------------------------
 
-        int GetPressureAltitude(void) const;
+        int GetPressureAltitude() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The true altitude of the plane in feet.
@@ -646,7 +646,7 @@ namespace EuroScopePlugIn {
 
         //---GetFlightLevel------------------------------------------------
 
-        int GetFlightLevel(void) const;
+        int GetFlightLevel() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The altitude calculated using stadard pressure. The return
@@ -656,7 +656,7 @@ namespace EuroScopePlugIn {
 
         //---GetReportedGS-------------------------------------------------
 
-        int GetReportedGS(void) const;
+        int GetReportedGS() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The GS reported by the pilot client
@@ -665,9 +665,9 @@ namespace EuroScopePlugIn {
 
         //---GetReportedHeading--------------------------------------------
 
-        int GetReportedHeading(void) const;
+        int GetReportedHeading() const;
 
-        int GetReportedHeadingTrueNorth(void) const;
+        int GetReportedHeadingTrueNorth() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The heading (not tracking) reported by the pilot client.
@@ -676,7 +676,7 @@ namespace EuroScopePlugIn {
 
         //---GetReportedPitch----------------------------------------------
 
-        int GetReportedPitch(void) const;
+        int GetReportedPitch() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The pitch reported by the pilot client. The value is between
@@ -686,7 +686,7 @@ namespace EuroScopePlugIn {
 
         //---GetReportedBank-----------------------------------------------
 
-        int GetReportedBank(void) const;
+        int GetReportedBank() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The pitch reported by the pilot client. The value is between
@@ -696,7 +696,7 @@ namespace EuroScopePlugIn {
 
         //---GetRadarFlags-------------------------------------------------
 
-        int GetRadarFlags(void) const;
+        int GetRadarFlags() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The logical or combination of the following values:
@@ -722,14 +722,14 @@ namespace EuroScopePlugIn {
 
         //---CFlightPlanData-------------------------------------------
 
-        inline CFlightPlanData(void) {
-            m_FpPosition = NULL;
+        CFlightPlanData() {
+            m_FpPosition = nullptr;
         };
 
 
         //---IsReceived----------------------------------------------------
 
-        bool IsReceived(void) const;
+        bool IsReceived() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if any kind of FP is received from the servers
@@ -739,7 +739,7 @@ namespace EuroScopePlugIn {
 
         //---IsAmended-----------------------------------------------------
 
-        bool IsAmended(void) const;
+        bool IsAmended() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if the FP is amended by a controller
@@ -749,7 +749,7 @@ namespace EuroScopePlugIn {
 
         //---AmendFlightPlan-----------------------------------------------
 
-        bool AmendFlightPlan(void);
+        bool AmendFlightPlan();
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if success
@@ -762,7 +762,7 @@ namespace EuroScopePlugIn {
 
         //---GetPlanType---------------------------------------------------
 
-        const char *GetPlanType(void) const;
+        const char* GetPlanType() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The type of the flight plan: V or I.
@@ -771,7 +771,7 @@ namespace EuroScopePlugIn {
 
         //---SetPlanType---------------------------------------------------
 
-        bool SetPlanType(const char *sPlanType);
+        bool SetPlanType(const char* sPlanType);
         //-----------------------------------------------------------------
         //	Parameters :
         //		=>	sPlanType	- the type of the FP: V or I.
@@ -787,7 +787,7 @@ namespace EuroScopePlugIn {
 
         //---GetAircraftInfo-----------------------------------------------
 
-        const char *GetAircraftInfo(void) const;
+        const char* GetAircraftInfo() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The unextracted aircraft information.
@@ -796,7 +796,7 @@ namespace EuroScopePlugIn {
 
         //---SetAircraftInfo-----------------------------------------------
 
-        bool SetAircraftInfo(const char *sInfo);
+        bool SetAircraftInfo(const char* sInfo);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sInfo   - the complete aircraft information
@@ -812,7 +812,7 @@ namespace EuroScopePlugIn {
 
         //---GetAircraftWtc------------------------------------------------
 
-        char GetAircraftWtc(void) const;
+        char GetAircraftWtc() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The weight category of the aircraft.
@@ -827,7 +827,7 @@ namespace EuroScopePlugIn {
 
         //---GetAircraftType-----------------------------------------------
 
-        char GetAircraftType(void) const;
+        char GetAircraftType() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The type of the aircraft.
@@ -844,7 +844,7 @@ namespace EuroScopePlugIn {
 
         //---GetEngineNumber-----------------------------------------------
 
-        int GetEngineNumber(void) const;
+        int GetEngineNumber() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The number of engines.
@@ -853,7 +853,7 @@ namespace EuroScopePlugIn {
 
         //---GetEngineType-------------------------------------------------
 
-        char GetEngineType(void) const;
+        char GetEngineType() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The type of the engines of the aircraft.
@@ -868,7 +868,7 @@ namespace EuroScopePlugIn {
 
         //---GetCapibilities-----------------------------------------------
 
-        char GetCapibilities(void) const;
+        char GetCapibilities() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The navigation capibilities of the aircraft.
@@ -897,7 +897,7 @@ namespace EuroScopePlugIn {
 
         //---IsRvsm--------------------------------------------------------
 
-        bool IsRvsm(void) const;
+        bool IsRvsm() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if the aircraft if RVSM capable
@@ -907,7 +907,7 @@ namespace EuroScopePlugIn {
 
         //---GetManufacturerType-------------------------------------------
 
-        const char *GetManufacturerType(void) const;
+        const char* GetManufacturerType() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The type description of the aircraft by the manufacturer.
@@ -916,7 +916,7 @@ namespace EuroScopePlugIn {
 
         //---GetAircraftFPType---------------------------------------------
 
-        const char *GetAircraftFPType(void) const;
+        const char* GetAircraftFPType() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The unencoded AC type as written to the FP.
@@ -925,7 +925,7 @@ namespace EuroScopePlugIn {
 
         //---GetTrueAirspeed-----------------------------------------------
 
-        int GetTrueAirspeed(void) const;
+        int GetTrueAirspeed() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The true airspeed filed.
@@ -950,7 +950,7 @@ namespace EuroScopePlugIn {
 
         //---GetOrigin-----------------------------------------------------
 
-        const char *GetOrigin(void) const;
+        const char* GetOrigin() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The origin airport.
@@ -959,7 +959,7 @@ namespace EuroScopePlugIn {
 
         //---SetOrigin-----------------------------------------------------
 
-        bool SetOrigin(const char *sOrigin);
+        bool SetOrigin(const char* sOrigin);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sOrigin - the origina airport
@@ -975,7 +975,7 @@ namespace EuroScopePlugIn {
 
         //---GetFinalAltitude----------------------------------------------
 
-        int GetFinalAltitude(void) const;
+        int GetFinalAltitude() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The final requested altitude.
@@ -1000,7 +1000,7 @@ namespace EuroScopePlugIn {
 
         //---GetDestination------------------------------------------------
 
-        const char *GetDestination(void) const;
+        const char* GetDestination() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The destination airport.
@@ -1009,7 +1009,7 @@ namespace EuroScopePlugIn {
 
         //---SetDestination------------------------------------------------
 
-        bool SetDestination(const char *sDestination);
+        bool SetDestination(const char* sDestination);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sDestination    - the destination airport
@@ -1025,7 +1025,7 @@ namespace EuroScopePlugIn {
 
         //---GetAlternate--------------------------------------------------
 
-        const char *GetAlternate(void) const;
+        const char* GetAlternate() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The alternate airport.
@@ -1034,7 +1034,7 @@ namespace EuroScopePlugIn {
 
         //---SetAlternate--------------------------------------------------
 
-        bool SetAlternate(const char *sAlternate);
+        bool SetAlternate(const char* sAlternate);
         //-----------------------------------------------------------------
         //  Parameters :
         //      sAlternate  - the alternate airport
@@ -1050,7 +1050,7 @@ namespace EuroScopePlugIn {
 
         //---GetRemarks----------------------------------------------------
 
-        const char *GetRemarks(void) const;
+        const char* GetRemarks() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The remarks field.
@@ -1059,7 +1059,7 @@ namespace EuroScopePlugIn {
 
         //---SetRemarks----------------------------------------------------
 
-        bool SetRemarks(const char *sRemarks);
+        bool SetRemarks(const char* sRemarks);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sRemarks    - the remarks field
@@ -1075,7 +1075,7 @@ namespace EuroScopePlugIn {
 
         //---GetCommunicationType------------------------------------------
 
-        char GetCommunicationType(void) const;
+        char GetCommunicationType() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The communications type.
@@ -1089,7 +1089,7 @@ namespace EuroScopePlugIn {
 
         //---GetRoute------------------------------------------------------
 
-        const char *GetRoute(void) const;
+        const char* GetRoute() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The route field.
@@ -1098,7 +1098,7 @@ namespace EuroScopePlugIn {
 
         //---SetRoute------------------------------------------------------
 
-        bool SetRoute(const char *sRoute);
+        bool SetRoute(const char* sRoute);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sRoute  - the route field
@@ -1114,7 +1114,7 @@ namespace EuroScopePlugIn {
 
         //---GetSidName----------------------------------------------------
 
-        const char *GetSidName(void) const;
+        const char* GetSidName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The extracted or assigned SID name.
@@ -1123,7 +1123,7 @@ namespace EuroScopePlugIn {
 
         //---GetStarName---------------------------------------------------
 
-        const char *GetStarName(void) const;
+        const char* GetStarName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The extracted or assigned STAR name.
@@ -1132,7 +1132,7 @@ namespace EuroScopePlugIn {
 
         //---GetDepartureRwy-----------------------------------------------
 
-        const char *GetDepartureRwy(void) const;
+        const char* GetDepartureRwy() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The extracted or assigned departure RWY name.
@@ -1141,7 +1141,7 @@ namespace EuroScopePlugIn {
 
         //---GetArrivalRwy-------------------------------------------------
 
-        const char *GetArrivalRwy(void) const;
+        const char* GetArrivalRwy() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The extracted or assigned arrival RWY name.
@@ -1150,7 +1150,7 @@ namespace EuroScopePlugIn {
 
         //---GetEstimatedDepartureTime-------------------------------------
 
-        const char *GetEstimatedDepartureTime(void) const;
+        const char* GetEstimatedDepartureTime() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The pilot sent estimated departure time (uncompiled original
@@ -1160,7 +1160,7 @@ namespace EuroScopePlugIn {
 
         //---SetEstimatedDepartureTime-------------------------------------
 
-        bool SetEstimatedDepartureTime(const char *sDepTime);
+        bool SetEstimatedDepartureTime(const char* sDepTime);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sDepTime    - The estimated departure time (uncompiled
@@ -1177,7 +1177,7 @@ namespace EuroScopePlugIn {
 
         //---GetActualDepartureTime----------------------------------------
 
-        const char *GetActualDepartureTime(void) const;
+        const char* GetActualDepartureTime() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The pilot sent actual departure time (uncompiled original
@@ -1187,7 +1187,7 @@ namespace EuroScopePlugIn {
 
         //---SetActualDepartureTime----------------------------------------
 
-        bool SetActualDepartureTime(const char *sDepTime);
+        bool SetActualDepartureTime(const char* sDepTime);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sDepTime    - The actual departure time (uncompiled
@@ -1204,7 +1204,7 @@ namespace EuroScopePlugIn {
 
         //---GetEnrouteHours-----------------------------------------------
 
-        const char *GetEnrouteHours(void) const;
+        const char* GetEnrouteHours() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The pilot sent hours for enroute (uncompiled original
@@ -1214,7 +1214,7 @@ namespace EuroScopePlugIn {
 
         //---SetEnrouteHours-----------------------------------------------
 
-        bool SetEnrouteHours(const char *sEnrouteHours);
+        bool SetEnrouteHours(const char* sEnrouteHours);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sEnrouteHours   - The hours for enroute (uncompiled
@@ -1231,7 +1231,7 @@ namespace EuroScopePlugIn {
 
         //---GetEnrouteMinutes---------------------------------------------
 
-        const char *GetEnrouteMinutes(void) const;
+        const char* GetEnrouteMinutes() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The pilot sent minutes for enroute (uncompiled original
@@ -1241,7 +1241,7 @@ namespace EuroScopePlugIn {
 
         //---SetEnrouteMinutes---------------------------------------------
 
-        bool SetEnrouteMinutes(const char *sEnrouteMinutes);
+        bool SetEnrouteMinutes(const char* sEnrouteMinutes);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sEnrouteMinutes   - The minutes for enroute (uncompiled
@@ -1258,7 +1258,7 @@ namespace EuroScopePlugIn {
 
         //---GetFuelHours--------------------------------------------------
 
-        const char *GetFuelHours(void) const;
+        const char* GetFuelHours() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The pilot sent hours available fuel (uncompiled original
@@ -1268,7 +1268,7 @@ namespace EuroScopePlugIn {
 
         //---SetFuelHours--------------------------------------------------
 
-        bool SetFuelHours(const char *sFuelHours);
+        bool SetFuelHours(const char* sFuelHours);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sFuelHours  - The hours of available fuel (uncompiled
@@ -1285,7 +1285,7 @@ namespace EuroScopePlugIn {
 
         //---GetFuelMinutes------------------------------------------------
 
-        const char *GetFuelMinutes(void) const;
+        const char* GetFuelMinutes() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The pilot sent minutes available fuel (uncompiled original
@@ -1295,7 +1295,7 @@ namespace EuroScopePlugIn {
 
         //---SetFuelMinutes------------------------------------------------
 
-        bool SetFuelMinutes(const char *sFuelMinutes);
+        bool SetFuelMinutes(const char* sFuelMinutes);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sFuelMinutes    - The minutes of available fuel (uncompiled
@@ -1380,14 +1380,14 @@ namespace EuroScopePlugIn {
 
         //---CFlightPlanControllerAssignedData-----------------------------
 
-        inline CFlightPlanControllerAssignedData(void) {
-            m_FpPosition = NULL;
+        CFlightPlanControllerAssignedData() {
+            m_FpPosition = nullptr;
         };
 
 
         //---GetSquawk-----------------------------------------------------
 
-        const char *GetSquawk(void) const;
+        const char* GetSquawk() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The assigned squawk (may be empty).
@@ -1396,7 +1396,7 @@ namespace EuroScopePlugIn {
 
         //---SetSquawk-----------------------------------------------------
 
-        bool SetSquawk(const char *sSquawk);
+        bool SetSquawk(const char* sSquawk);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sSquawk - the newly assigned squawk
@@ -1409,7 +1409,7 @@ namespace EuroScopePlugIn {
 
         //---GetFinalAltitude----------------------------------------------
 
-        int GetFinalAltitude(void) const;
+        int GetFinalAltitude() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The controller ovveriden final altitude. No ALT/FL change here.
@@ -1431,7 +1431,7 @@ namespace EuroScopePlugIn {
 
         //---GetClearedAltitude--------------------------------------------
 
-        int GetClearedAltitude(void) const;
+        int GetClearedAltitude() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The cleared altitude; no ALT/FL change here. There are
@@ -1458,7 +1458,7 @@ namespace EuroScopePlugIn {
 
         //---GetCommunicationType------------------------------------------
 
-        char GetCommunicationType(void) const;
+        char GetCommunicationType() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The communications type.
@@ -1485,7 +1485,7 @@ namespace EuroScopePlugIn {
 
         //---GetScratchPadString-------------------------------------------
 
-        const char *GetScratchPadString(void) const;
+        const char* GetScratchPadString() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The scratch pad string value. Only the real valus, directs,
@@ -1495,7 +1495,7 @@ namespace EuroScopePlugIn {
 
         //---SetScratchPadString-------------------------------------------
 
-        bool SetScratchPadString(const char *sString);
+        bool SetScratchPadString(const char* sString);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sString - the new scratch string value
@@ -1508,7 +1508,7 @@ namespace EuroScopePlugIn {
 
         //---GetAssignedSpeed----------------------------------------------
 
-        int GetAssignedSpeed(void) const;
+        int GetAssignedSpeed() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The controller assigned speed. Value 0 indicates no assignment.
@@ -1530,7 +1530,7 @@ namespace EuroScopePlugIn {
 
         //---GetAssignedMach-----------------------------------------------
 
-        int GetAssignedMach(void) const;
+        int GetAssignedMach() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The controller assigned mach number multiplied by 100.
@@ -1554,7 +1554,7 @@ namespace EuroScopePlugIn {
 
         //---GetAssignedRate-----------------------------------------------
 
-        int GetAssignedRate(void) const;
+        int GetAssignedRate() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The controller assigned climb/descend rate. There is no
@@ -1578,7 +1578,7 @@ namespace EuroScopePlugIn {
 
         //---GetAssignedHeading--------------------------------------------
 
-        int GetAssignedHeading(void) const;
+        int GetAssignedHeading() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The controller assigned heading. Value 0 indicates no assignment.
@@ -1600,7 +1600,7 @@ namespace EuroScopePlugIn {
 
         //---GetDirectToPointName------------------------------------------
 
-        const char *GetDirectToPointName(void) const;
+        const char* GetDirectToPointName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The assigned direct to point name.
@@ -1609,7 +1609,7 @@ namespace EuroScopePlugIn {
 
         //---SetDirectToPointName------------------------------------------
 
-        bool SetDirectToPointName(const char *sPointName);
+        bool SetDirectToPointName(const char* sPointName);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sPointName  - the name of the point
@@ -1622,7 +1622,7 @@ namespace EuroScopePlugIn {
 
         //---GetFlightStripAnnotation--------------------------------------
 
-        const char *GetFlightStripAnnotation(int Index) const;
+        const char* GetFlightStripAnnotation(int Index) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  Index   - the index of the annotation (0-8).
@@ -1635,7 +1635,7 @@ namespace EuroScopePlugIn {
         //---SetFlightStripAnnotation--------------------------------------
 
         bool SetFlightStripAnnotation(int Index,
-                                      const char *sAnnotation);
+                                      const char* sAnnotation);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  Index       - the index of the annotation (0-8).
@@ -1654,7 +1654,7 @@ namespace EuroScopePlugIn {
 
         ESINDEX m_FpPosition;  // the currently referenced AC position
 
-        friend class CPlugInData;
+        friend class ::CPlugInData;
 
         friend class CPlugIn;
 
@@ -1666,15 +1666,15 @@ namespace EuroScopePlugIn {
 
         //---CFlightPlan---------------------------------------------------
 
-        inline CFlightPlan(void) {
-            m_FpPosition = NULL;
+        CFlightPlan() {
+            m_FpPosition = nullptr;
         };
 
 
         //---IsValid-------------------------------------------------------
 
-        inline bool IsValid(void) const {
-            return m_FpPosition != NULL;
+        bool IsValid() const {
+            return m_FpPosition != nullptr;
         };
         //-----------------------------------------------------------------
         //  Return :
@@ -1688,7 +1688,7 @@ namespace EuroScopePlugIn {
 
         //---GetCallsign---------------------------------------------------
 
-        const char *GetCallsign(void) const;
+        const char* GetCallsign() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The callsign of the AC.
@@ -1697,7 +1697,7 @@ namespace EuroScopePlugIn {
 
         //---GetPilotName--------------------------------------------------
 
-        const char *GetPilotName(void) const;
+        const char* GetPilotName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The name of the pilot extracted from statistics data.
@@ -1707,7 +1707,7 @@ namespace EuroScopePlugIn {
 
         //---GetState------------------------------------------------------
 
-        int GetState(void) const;
+        int GetState() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The state of the AC (see FLIGHT_PLAN_STATE_ ...).
@@ -1717,7 +1717,7 @@ namespace EuroScopePlugIn {
 
         //---GetFPState----------------------------------------------------
 
-        int GetFPState(void) const;
+        int GetFPState() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The state of the AC (FLIGHT_PLAN_STATE_NOT_STARTED,
@@ -1729,7 +1729,7 @@ namespace EuroScopePlugIn {
 
         //---GetSimulated--------------------------------------------------
 
-        bool GetSimulated(void) const;
+        bool GetSimulated() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if the AC is out of range and ES simulates its movements
@@ -1739,7 +1739,7 @@ namespace EuroScopePlugIn {
 
         //---GetTrackingControllerCallsign---------------------------------
 
-        const char *GetTrackingControllerCallsign(void) const;
+        const char* GetTrackingControllerCallsign() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The callsign of the controller currently tracking.
@@ -1749,7 +1749,7 @@ namespace EuroScopePlugIn {
 
         //---GetTrackingControllerId---------------------------------------
 
-        const char *GetTrackingControllerId(void) const;
+        const char* GetTrackingControllerId() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The position ID of the controller currently tracking.
@@ -1759,7 +1759,7 @@ namespace EuroScopePlugIn {
 
         //---GetTrackingControllerIsMe-------------------------------------
 
-        bool GetTrackingControllerIsMe(void) const;
+        bool GetTrackingControllerIsMe() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if the plane is tracked by me
@@ -1769,7 +1769,7 @@ namespace EuroScopePlugIn {
 
         //---GetHandoffTargetControllerCallsign----------------------------
 
-        const char *GetHandoffTargetControllerCallsign(void) const;
+        const char* GetHandoffTargetControllerCallsign() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The callsign of the controller who is the target of the
@@ -1780,7 +1780,7 @@ namespace EuroScopePlugIn {
 
         //---GetHandoffTargetControllerId----------------------------------
 
-        const char *GetHandoffTargetControllerId(void) const;
+        const char* GetHandoffTargetControllerId() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The position ID of the controller who is the target of the
@@ -1791,7 +1791,7 @@ namespace EuroScopePlugIn {
 
         //---GetDistanceToDestination--------------------------------------
 
-        double GetDistanceToDestination(void) const;
+        double GetDistanceToDestination() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The full calculated distance to the destination airport.
@@ -1800,7 +1800,7 @@ namespace EuroScopePlugIn {
 
         //---GetDistanceFromOrigin-----------------------------------------
 
-        double GetDistanceFromOrigin(void) const;
+        double GetDistanceFromOrigin() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The full calculated distance from the origin airport.
@@ -1809,7 +1809,7 @@ namespace EuroScopePlugIn {
 
         //---GetNextCopxPointName------------------------------------------
 
-        const char *GetNextCopxPointName(void) const;
+        const char* GetNextCopxPointName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The next active COPX point name along the extracted route.
@@ -1819,7 +1819,7 @@ namespace EuroScopePlugIn {
 
         //---GetNextFirCopxPointName---------------------------------------
 
-        const char *GetNextFirCopxPointName(void) const;
+        const char* GetNextFirCopxPointName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The next active FIR COPX point name along the extracted route.
@@ -1829,7 +1829,7 @@ namespace EuroScopePlugIn {
 
         //---GetSectorEntryMinutes-----------------------------------------
 
-        int GetSectorEntryMinutes(void) const;
+        int GetSectorEntryMinutes() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The time in minutes this plane will enter to my sectors.
@@ -1840,7 +1840,7 @@ namespace EuroScopePlugIn {
 
         //---GetSectorExitMinutes------------------------------------------
 
-        int GetSectorExitMinutes(void) const;
+        int GetSectorExitMinutes() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The time in minutes this plane will leave to my sectors.
@@ -1850,7 +1850,7 @@ namespace EuroScopePlugIn {
 
         //---GetRAMFlag----------------------------------------------------
 
-        bool GetRAMFlag(void) const;
+        bool GetRAMFlag() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The RAM flag when RAM warning is to be displayed.
@@ -1859,7 +1859,7 @@ namespace EuroScopePlugIn {
 
         //---GetCLAMFlag---------------------------------------------------
 
-        bool GetCLAMFlag(void) const;
+        bool GetCLAMFlag() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The CLAM flag when CLAM warning is to be displayed.
@@ -1868,7 +1868,7 @@ namespace EuroScopePlugIn {
 
         //---GetGroundState------------------------------------------------
 
-        const char *GetGroundState(void) const;
+        const char* GetGroundState() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The ground state of the AC (ST-UP, PUSH, TAXI, DEPA or empty).
@@ -1877,7 +1877,7 @@ namespace EuroScopePlugIn {
 
         //---GetClearenceFlag----------------------------------------------
 
-        bool GetClearenceFlag(void) const;
+        bool GetClearenceFlag() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The state if the clearence is received or not.
@@ -1886,7 +1886,7 @@ namespace EuroScopePlugIn {
 
         //---IsTextCommunication-------------------------------------------
 
-        bool IsTextCommunication(void) const;
+        bool IsTextCommunication() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A flag indicating if the pilot or a controller indicated
@@ -1896,7 +1896,7 @@ namespace EuroScopePlugIn {
 
         //---GetFinalAltitude----------------------------------------------
 
-        int GetFinalAltitude(void) const;
+        int GetFinalAltitude() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The final altitude from the FP or from controller override.
@@ -1906,7 +1906,7 @@ namespace EuroScopePlugIn {
 
         //---GetClearedAltitude--------------------------------------------
 
-        int GetClearedAltitude(void) const;
+        int GetClearedAltitude() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The cleared altitude. If missing then the final one.
@@ -1916,7 +1916,7 @@ namespace EuroScopePlugIn {
 
         //---GetEntryCoordinationPointState--------------------------------
 
-        int GetEntryCoordinationPointState(void) const;
+        int GetEntryCoordinationPointState() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The state of the entry point coordination. One of the
@@ -1926,7 +1926,7 @@ namespace EuroScopePlugIn {
 
         //---GetEntryCoordinationPointName---------------------------------
 
-        const char *GetEntryCoordinationPointName(void) const;
+        const char* GetEntryCoordinationPointName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The cordination point name for entry point.
@@ -1935,7 +1935,7 @@ namespace EuroScopePlugIn {
 
         //---GetEntryCoordinationAltitudeState-----------------------------
 
-        int GetEntryCoordinationAltitudeState(void) const;
+        int GetEntryCoordinationAltitudeState() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The state of the entry point altitude coordination. One of the
@@ -1945,7 +1945,7 @@ namespace EuroScopePlugIn {
 
         //---GetEntryCoordinationAltitude----------------------------------
 
-        int GetEntryCoordinationAltitude(void) const;
+        int GetEntryCoordinationAltitude() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The cordination point altitude for entry point.
@@ -1954,7 +1954,7 @@ namespace EuroScopePlugIn {
 
         //---GetExitCoordinationNameState----------------------------------
 
-        int GetExitCoordinationNameState(void) const;
+        int GetExitCoordinationNameState() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The state of the exit point name coordination. One of the
@@ -1964,7 +1964,7 @@ namespace EuroScopePlugIn {
 
         //---GetExitCoordinationPointName----------------------------------
 
-        const char *GetExitCoordinationPointName(void) const;
+        const char* GetExitCoordinationPointName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The cordination point name for exit point.
@@ -1973,7 +1973,7 @@ namespace EuroScopePlugIn {
 
         //---GetExitCoordinationAltitudeState------------------------------
 
-        int GetExitCoordinationAltitudeState(void) const;
+        int GetExitCoordinationAltitudeState() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The state of the exit point altitude coordination. One of the
@@ -1983,7 +1983,7 @@ namespace EuroScopePlugIn {
 
         //---GetExitCoordinationAltitude-----------------------------------
 
-        int GetExitCoordinationAltitude(void) const;
+        int GetExitCoordinationAltitude() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The cordination point altitude for entry point.
@@ -1992,7 +1992,7 @@ namespace EuroScopePlugIn {
 
         //---GetCoordinatedNextController----------------------------------
 
-        const char *GetCoordinatedNextController(void) const;
+        const char* GetCoordinatedNextController() const;
         //-----------------------------------------------------------------
         //  Return :
         //      - the callsign of the next controller if there is a
@@ -2003,7 +2003,7 @@ namespace EuroScopePlugIn {
 
         //---GetCoordinatedNextControllerState-----------------------------
 
-        int GetCoordinatedNextControllerState(void) const;
+        int GetCoordinatedNextControllerState() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The state of the next controller coordination. One of the
@@ -2013,7 +2013,7 @@ namespace EuroScopePlugIn {
 
         //---GetCorrelatedRadarTarget--------------------------------------
 
-        CRadarTarget GetCorrelatedRadarTarget(void) const;
+        CRadarTarget GetCorrelatedRadarTarget() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The correlated radar target. If no correlated target then
@@ -2041,7 +2041,7 @@ namespace EuroScopePlugIn {
 
         //---Uncorrelate---------------------------------------------------
 
-        void Uncorrelate(void);
+        void Uncorrelate();
         //-----------------------------------------------------------------
         //  Description :
         //      It uncorrelates the flight plan from its current target.
@@ -2053,7 +2053,7 @@ namespace EuroScopePlugIn {
 
         //---StartTracking-------------------------------------------------
 
-        bool StartTracking(void);
+        bool StartTracking();
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if success
@@ -2066,7 +2066,7 @@ namespace EuroScopePlugIn {
 
         //---EndTracking---------------------------------------------------
 
-        bool EndTracking(void);
+        bool EndTracking();
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if success
@@ -2079,7 +2079,7 @@ namespace EuroScopePlugIn {
 
         //---InitiateHandoff-----------------------------------------------
 
-        bool InitiateHandoff(const char *sTargetController);
+        bool InitiateHandoff(const char* sTargetController);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sTargetController   - the controller to initiate the
@@ -2096,7 +2096,7 @@ namespace EuroScopePlugIn {
 
         //---AcceptHandoff-------------------------------------------------
 
-        void AcceptHandoff(void);
+        void AcceptHandoff();
         //-----------------------------------------------------------------
         //  Description :
         //      It accepts a handoff initiated to me.
@@ -2105,7 +2105,7 @@ namespace EuroScopePlugIn {
 
         //---RefuseHandoff-------------------------------------------------
 
-        void RefuseHandoff(void);
+        void RefuseHandoff();
         //-----------------------------------------------------------------
         //  Description :
         //      It refuses a handoff initiated to me.
@@ -2114,8 +2114,8 @@ namespace EuroScopePlugIn {
 
         //---InitiateCoordination------------------------------------------
 
-        bool InitiateCoordination(const char *sTargetController,
-                                  const char *sPointName,
+        bool InitiateCoordination(const char* sTargetController,
+                                  const char* sPointName,
                                   int Altitude);
         //-----------------------------------------------------------------
         //  Parameters :
@@ -2137,7 +2137,7 @@ namespace EuroScopePlugIn {
 
         //---AcceptCoordination--------------------------------------------
 
-        void AcceptCoordination(void);
+        void AcceptCoordination();
         //-----------------------------------------------------------------
         //  Description :
         //      It accepts a coordination initiated to me.
@@ -2146,7 +2146,7 @@ namespace EuroScopePlugIn {
 
         //---RefuseCoordination--------------------------------------------
 
-        void RefuseCoordination(void);
+        void RefuseCoordination();
         //-----------------------------------------------------------------
         //  Description :
         //      It refuses a handoff initiated to me.
@@ -2155,7 +2155,7 @@ namespace EuroScopePlugIn {
 
         //---PushFlightStrip-----------------------------------------------
 
-        void PushFlightStrip(const char *sTargetController);
+        void PushFlightStrip(const char* sTargetController);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sTargetController   - the controller to send the flight
@@ -2165,8 +2165,8 @@ namespace EuroScopePlugIn {
 
         //---SetEstimation-------------------------------------------------
 
-        void SetEstimation(const char *sPointName,
-                           const char *sTime);
+        void SetEstimation(const char* sPointName,
+                           const char* sTime);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sPointName  - the name along the route
@@ -2177,9 +2177,9 @@ namespace EuroScopePlugIn {
 
         //---ClearEstimation-----------------------------------------------
 
-        void ClearEstimation(void);
+        void ClearEstimation();
 
-        void ClearEstimation(const char *sPointName);
+        void ClearEstimation(const char* sPointName);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sPointName  - the name along the route
@@ -2192,7 +2192,7 @@ namespace EuroScopePlugIn {
 
         //---GetExtractedRoute---------------------------------------------
 
-        CFlightPlanExtractedRoute GetExtractedRoute(void) const;
+        CFlightPlanExtractedRoute GetExtractedRoute() const;
         //-----------------------------------------------------------------
         //  Return :
         //      An extracted route object instance.
@@ -2207,7 +2207,7 @@ namespace EuroScopePlugIn {
 
         //---GetPositionPredictions----------------------------------------
 
-        CFlightPlanPositionPredictions GetPositionPredictions(void) const;
+        CFlightPlanPositionPredictions GetPositionPredictions() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A position prediction array object instance.
@@ -2227,7 +2227,7 @@ namespace EuroScopePlugIn {
 
         //---GetFPTrackPosition--------------------------------------------
 
-        CRadarTargetPositionData GetFPTrackPosition(void) const;
+        CRadarTargetPositionData GetFPTrackPosition() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A flight plan track position. This position data points to the
@@ -2240,7 +2240,7 @@ namespace EuroScopePlugIn {
 
         //---GetFlightPlanData---------------------------------------------
 
-        CFlightPlanData GetFlightPlanData(void) const;
+        CFlightPlanData GetFlightPlanData() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A flight plan data object instance.
@@ -2255,7 +2255,7 @@ namespace EuroScopePlugIn {
 
         //---GetControllerAssignedData-------------------------------------
 
-        CFlightPlanControllerAssignedData GetControllerAssignedData(void) const;
+        CFlightPlanControllerAssignedData GetControllerAssignedData() const;
         //-----------------------------------------------------------------
         //  Return :
         //      An instance that holds controller assigned data.
@@ -2275,7 +2275,7 @@ namespace EuroScopePlugIn {
 
         ESINDEX m_RtPosition;  // the currently referenced AC position
 
-        friend class CPlugInData;
+        friend class ::CPlugInData;
 
         friend class CPlugIn;
 
@@ -2285,15 +2285,15 @@ namespace EuroScopePlugIn {
 
         //---CRadarTarget--------------------------------------------------
 
-        inline CRadarTarget(void) {
-            m_RtPosition = NULL;
+        CRadarTarget() {
+            m_RtPosition = nullptr;
         };
 
 
         //---IsValid-------------------------------------------------------
 
-        inline bool IsValid(void) const {
-            return m_RtPosition != NULL;
+        bool IsValid() const {
+            return m_RtPosition != nullptr;
         };
         //-----------------------------------------------------------------
         //  Return :
@@ -2307,7 +2307,7 @@ namespace EuroScopePlugIn {
 
         //---GetCallsign---------------------------------------------------
 
-        const char *GetCallsign(void) const;
+        const char* GetCallsign() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The callsign of the AC.
@@ -2316,7 +2316,7 @@ namespace EuroScopePlugIn {
 
         //---GetSystemID---------------------------------------------------
 
-        const char *GetSystemID(void) const;
+        const char* GetSystemID() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The system assigned ID to the radar target. It is surely the
@@ -2327,7 +2327,7 @@ namespace EuroScopePlugIn {
 
         //---GetVerticalSpeed----------------------------------------------
 
-        int GetVerticalSpeed(void) const;
+        int GetVerticalSpeed() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The calculated vertical speed of the selected AC in feet/minute.
@@ -2339,7 +2339,7 @@ namespace EuroScopePlugIn {
 
         //---GetTrackHeading-----------------------------------------------
 
-        double GetTrackHeading(void) const;
+        double GetTrackHeading() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The calculated track direction in degree
@@ -2348,7 +2348,7 @@ namespace EuroScopePlugIn {
 
         //---GetGS---------------------------------------------------------
 
-        int GetGS(void) const;
+        int GetGS() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The ground speed. First it uses the plane reported GS. If
@@ -2358,7 +2358,7 @@ namespace EuroScopePlugIn {
 
         //---GetCorrelatedFlightPlan---------------------------------------
 
-        CFlightPlan GetCorrelatedFlightPlan(void) const;
+        CFlightPlan GetCorrelatedFlightPlan() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The currently correlated flight plan. If the radar target
@@ -2386,7 +2386,7 @@ namespace EuroScopePlugIn {
 
         //---Uncorrelate---------------------------------------------------
 
-        void Uncorrelate(void);
+        void Uncorrelate();
         //-----------------------------------------------------------------
         //  Description :
         //      It uncorrelates the radar target from the flight plan.
@@ -2398,7 +2398,7 @@ namespace EuroScopePlugIn {
 
         //---GetPosition---------------------------------------------------
 
-        CRadarTargetPositionData GetPosition(void) const;
+        CRadarTargetPositionData GetPosition() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A plane position array instance. After calling this function
@@ -2439,7 +2439,7 @@ namespace EuroScopePlugIn {
         ESINDEX m_CtrPosition;  // the currently referenced AC position
         bool m_Myself;               // indicates myself is selected
 
-        friend class CPlugInData;
+        friend class ::CPlugInData;
 
         friend class CPlugIn;
 
@@ -2447,16 +2447,16 @@ namespace EuroScopePlugIn {
 
         //---CController---------------------------------------------------
 
-        inline CController(void) {
-            m_CtrPosition = NULL;
+        CController() {
+            m_CtrPosition = nullptr;
             m_Myself = false;
         };
 
 
         //---IsValid-------------------------------------------------------
 
-        inline bool IsValid(void) const {
-            return m_CtrPosition != NULL || m_Myself;
+        bool IsValid() const {
+            return m_CtrPosition != nullptr || m_Myself;
         };
         //-----------------------------------------------------------------
         //  Return :
@@ -2470,7 +2470,7 @@ namespace EuroScopePlugIn {
 
         //---GetCallsign---------------------------------------------------
 
-        const char *GetCallsign(void) const;
+        const char* GetCallsign() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The callsign of the controller.
@@ -2479,7 +2479,7 @@ namespace EuroScopePlugIn {
 
         //---GetPositionId-------------------------------------------------
 
-        const char *GetPositionId(void) const;
+        const char* GetPositionId() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The position ID of the selected controller.
@@ -2488,7 +2488,7 @@ namespace EuroScopePlugIn {
 
         //---GetPositionIdentified-----------------------------------------
 
-        bool GetPositionIdentified(void) const;
+        bool GetPositionIdentified() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if the controller is identified in the position file
@@ -2498,7 +2498,7 @@ namespace EuroScopePlugIn {
 
         //---GetPrimaryFrequency-------------------------------------------
 
-        double GetPrimaryFrequency(void) const;
+        double GetPrimaryFrequency() const;
         //-----------------------------------------------------------------
         //  Return :
         //      the primary frequency of the controller
@@ -2508,7 +2508,7 @@ namespace EuroScopePlugIn {
 
         //---GetFullName---------------------------------------------------
 
-        const char *GetFullName(void) const;
+        const char* GetFullName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The position ID of the selected controller.
@@ -2517,7 +2517,7 @@ namespace EuroScopePlugIn {
 
         //---GetRating-----------------------------------------------------
 
-        int GetRating(void) const;
+        int GetRating() const;
         //-----------------------------------------------------------------
         //  Return :
         //      the rating of the controller:
@@ -2538,7 +2538,7 @@ namespace EuroScopePlugIn {
 
         //---GetFacility---------------------------------------------------
 
-        int GetFacility(void) const;
+        int GetFacility() const;
         //-----------------------------------------------------------------
         //  Return :
         //      the facility of the controller:
@@ -2553,7 +2553,7 @@ namespace EuroScopePlugIn {
 
         //---GetSectorFileName---------------------------------------------
 
-        const char *GetSectorFileName(void) const;
+        const char* GetSectorFileName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The name of the sectorfile used by the controller.
@@ -2562,7 +2562,7 @@ namespace EuroScopePlugIn {
 
         //---IsController--------------------------------------------------
 
-        bool IsController(void) const;
+        bool IsController() const;
         //-----------------------------------------------------------------
         //  Return :
         //      true    - if the controller is accepted as controller by the
@@ -2573,7 +2573,7 @@ namespace EuroScopePlugIn {
 
         //---GetPosition---------------------------------------------------
 
-        CPosition GetPosition(void) const;
+        CPosition GetPosition() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The center position of the controller. It returns only the
@@ -2583,7 +2583,7 @@ namespace EuroScopePlugIn {
 
         //---GetRange------------------------------------------------------
 
-        int GetRange(void) const;
+        int GetRange() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The visibility range of the controller.
@@ -2592,7 +2592,7 @@ namespace EuroScopePlugIn {
 
         //---IsBreaking----------------------------------------------------
 
-        bool IsBreaking(void) const;
+        bool IsBreaking() const;
         //-----------------------------------------------------------------
         //  Return :
         //      The breaking state of the controller.
@@ -2601,7 +2601,7 @@ namespace EuroScopePlugIn {
 
         //---IsOngoingAble-------------------------------------------------
 
-        bool IsOngoingAble(void) const;
+        bool IsOngoingAble() const;
         //-----------------------------------------------------------------
         //  Return :
         //      Indicates if ready for ongoing coordination (indicates
@@ -2614,8 +2614,8 @@ namespace EuroScopePlugIn {
     class DllSpecEuroScope CRadarScreen {
     private:
 
-        CRadarView *m_pRadarView;     // pointer to the structure behind
-        CPlugIn *m_pPlugIn;
+        CRadarView* m_pRadarView;     // pointer to the structure behind
+        CPlugIn* m_pPlugIn;
         // pointer back to the plugin for easy access
 
         friend CPlugInData;
@@ -2624,7 +2624,7 @@ namespace EuroScopePlugIn {
 
         //---CRadarScreen--------------------------------------------------
 
-        CRadarScreen(void);
+        CRadarScreen();
         //-----------------------------------------------------------------
         //  Description :
         //      The default constructor.
@@ -2633,21 +2633,21 @@ namespace EuroScopePlugIn {
 
         //---GetPlugIn-----------------------------------------------------
 
-        inline CPlugIn *GetPlugIn(void) {
+        CPlugIn* GetPlugIn() {
             return m_pPlugIn;
         };
 
 
         //---GetRadarView--------------------------------------------------
 
-        inline CRadarView *GetRadarView(void) {
+        CRadarView* GetRadarView() {
             return m_pRadarView;
         };
 
 
         //---GetToolbarArea------------------------------------------------
 
-        RECT GetToolbarArea(void);
+        RECT GetToolbarArea();
         //-----------------------------------------------------------------
         //  Return :
         //      The rectangle that is cobered by the toolbar in pixels.
@@ -2657,7 +2657,7 @@ namespace EuroScopePlugIn {
 
         //---GetRadarArea--------------------------------------------------
 
-        RECT GetRadarArea(void);
+        RECT GetRadarArea();
         //-----------------------------------------------------------------
         //  Return :
         //      The rectangle that is covered by the radar screen.
@@ -2666,7 +2666,7 @@ namespace EuroScopePlugIn {
 
         //---GetChatArea---------------------------------------------------
 
-        RECT GetChatArea(void);
+        RECT GetChatArea();
         //-----------------------------------------------------------------
         //  Return :
         //      The rectangle that is covered by the chat lines.
@@ -2699,16 +2699,16 @@ namespace EuroScopePlugIn {
 
         //---SaveDataToAsr-------------------------------------------------
 
-        void SaveDataToAsr(const char *sVariableName,
-                           const char *sVariableDescription,
-                           const char *sValue);
+        void SaveDataToAsr(const char* sVariableName,
+                           const char* sVariableDescription,
+                           const char* sValue);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sVariableName       - the name under your value will be saved
         //      =>  sVariableDescription- a user readable name of the variable;
         //                                this value will be shown in the
         //                                save modified settings dialog; if
-        //                                empty (never pass NULL), then it
+        //                                empty (never pass nullptr), then it
         //                                will not be shown
         //      =>  sValue              - the value itself to be stored; it
         //                                may contain only printable chars and
@@ -2721,14 +2721,14 @@ namespace EuroScopePlugIn {
 
         //---GetDataFromAsr------------------------------------------------
 
-        const char *GetDataFromAsr(const char *sVariableName);
+        const char* GetDataFromAsr(const char* sVariableName);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sVariableName       - the name under your value was saved
         //
         //  Return :
         //      the value found in the ASR or
-        //      NULL if not found
+        //      nullptr if not found
         //
         //  Description :
         //      It loads the value for the plug from the ASR file.
@@ -2738,10 +2738,10 @@ namespace EuroScopePlugIn {
         //---AddScreenObject-----------------------------------------------
 
         void AddScreenObject(int ObjectType,
-                             const char *sObjectId,
+                             const char* sObjectId,
                              RECT Area,
                              bool Moveable,
-                             const char *sMessage);
+                             const char* sMessage);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  ObjectType  - the type of the object (depends on the plugin)
@@ -2763,7 +2763,7 @@ namespace EuroScopePlugIn {
 
         //---RequestRefresh------------------------------------------------
 
-        void RequestRefresh(void);
+        void RequestRefresh();
         //-----------------------------------------------------------------
         //  Description :
         //      Call this function when you need an update on the screen.
@@ -2778,7 +2778,7 @@ namespace EuroScopePlugIn {
         //---ShowSectorFileElement-----------------------------------------
 
         void ShowSectorFileElement(CSectorElement Element,
-                                   const char *sComponentName,
+                                   const char* sComponentName,
                                    bool Show);
         //-----------------------------------------------------------------
         //  Parameters :
@@ -2799,7 +2799,7 @@ namespace EuroScopePlugIn {
 
         //---RefreshMapContent---------------------------------------------
 
-        void RefreshMapContent(void);
+        void RefreshMapContent();
         //-----------------------------------------------------------------
         //  Description :
         //      This function refreshes the background map content of the view.
@@ -2810,11 +2810,11 @@ namespace EuroScopePlugIn {
 
         //---StartTagFunction----------------------------------------------
 
-        void StartTagFunction(const char *sCallsign,
-                              const char *sItemPlugInName,
+        void StartTagFunction(const char* sCallsign,
+                              const char* sItemPlugInName,
                               int ItemCode,
-                              const char *sItemString,
-                              const char *sFunctionPlugInName,
+                              const char* sItemString,
+                              const char* sFunctionPlugInName,
                               int FunctionId,
                               POINT Pt,
                               RECT Area);
@@ -2822,13 +2822,13 @@ namespace EuroScopePlugIn {
         //  Parameters :
         //      =>  sCallsign           - the AC which TAG is clicked
         //      =>  sItemPlugInName     - the item provider plug-in (for base
-        //                                EuroScope TAG functions pass NULL)
+        //                                EuroScope TAG functions pass nullptr)
         //      =>  ItemCode            - the item code
         //      =>  sItemString         - the string of the selected item (as
         //                                these are TAG item functions they may
         //                                require the actual item string)
         //      =>  sFunctionPlugInName - the function provider plugin (for base
-        //                                EuroScope TAG functions pass NULL)
+        //                                EuroScope TAG functions pass nullptr)
         //      =>  FunctionId          - the ID of the function
         //      =>  Pt                  - the mouse position
         //      =>  Area                - the area covered by the TAG item
@@ -2843,8 +2843,8 @@ namespace EuroScopePlugIn {
 
         //---GetDisplayArea------------------------------------------------
 
-        void GetDisplayArea(CPosition *pLeftDown,
-                            CPosition *pRightUp);
+        void GetDisplayArea(CPosition* pLeftDown,
+                            CPosition* pRightUp);
         //-----------------------------------------------------------------
         //  Parameters :
         //      <=  pLeftDown   - the left down corner of the screen
@@ -2873,7 +2873,7 @@ namespace EuroScopePlugIn {
 
         //---OnAsrContentLoaded--------------------------------------------
 
-        inline virtual void OnAsrContentLoaded(bool Loaded) {
+        virtual void OnAsrContentLoaded(bool Loaded) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -2890,8 +2890,7 @@ namespace EuroScopePlugIn {
 
         //---OnAsrContentToBeSaved------------------------------------------
 
-        virtual void OnAsrContentToBeSaved(void) {
-        };
+        virtual void OnAsrContentToBeSaved() {};
         //------------------------------------------------------------------
         //  Description :
         //      This function is called just before the content change dialog.
@@ -2902,8 +2901,8 @@ namespace EuroScopePlugIn {
 
         //---OnRefresh------------------------------------------------------
 
-        inline virtual void OnRefresh(HDC hDC,
-                                      int Phase) {
+        virtual void OnRefresh(HDC hDC,
+                               int Phase) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -2935,7 +2934,7 @@ namespace EuroScopePlugIn {
 
         //---OnAsrContentToBeClosed------------------------------------------
 
-        virtual void OnAsrContentToBeClosed(void) = NULL;
+        virtual void OnAsrContentToBeClosed() = 0;
         //------------------------------------------------------------------
         //  Description :
         //      This function is called just before close of the ASR file.
@@ -2948,7 +2947,7 @@ namespace EuroScopePlugIn {
 
         //---OnControllerPositionUpdate------------------------------------
 
-        inline virtual void OnControllerPositionUpdate(CController Controller) {
+        virtual void OnControllerPositionUpdate(CController Controller) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -2963,7 +2962,7 @@ namespace EuroScopePlugIn {
 
         //---OnControllerDisconnect----------------------------------------
 
-        inline virtual void OnControllerDisconnect(CController Controller) {
+        virtual void OnControllerDisconnect(CController Controller) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -2978,7 +2977,7 @@ namespace EuroScopePlugIn {
 
         //---OnRadarTargetPositionUpdate--------------------------------------
 
-        inline virtual void OnRadarTargetPositionUpdate(CRadarTarget RadarTarget) {
+        virtual void OnRadarTargetPositionUpdate(CRadarTarget RadarTarget) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -2993,7 +2992,7 @@ namespace EuroScopePlugIn {
 
         //---OnFlightPlanDisconnect----------------------------------------
 
-        inline virtual void OnFlightPlanDisconnect(CFlightPlan FlightPlan) {
+        virtual void OnFlightPlanDisconnect(CFlightPlan FlightPlan) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3008,7 +3007,7 @@ namespace EuroScopePlugIn {
 
         //---OnFlightPlanFlightPlanDataUpdate------------------------------
 
-        inline virtual void OnFlightPlanFlightPlanDataUpdate(CFlightPlan FlightPlan) {
+        virtual void OnFlightPlanFlightPlanDataUpdate(CFlightPlan FlightPlan) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3023,8 +3022,8 @@ namespace EuroScopePlugIn {
 
         //---OnFlightPlanControllerAssignedDataUpdate----------------------
 
-        inline virtual void OnFlightPlanControllerAssignedDataUpdate(CFlightPlan FlightPlan,
-                                                                     int DataType) {
+        virtual void OnFlightPlanControllerAssignedDataUpdate(CFlightPlan FlightPlan,
+                                                              int DataType) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3040,9 +3039,9 @@ namespace EuroScopePlugIn {
 
         //---OnFlightPlanFlightStripPushed---------------------------------
 
-        inline virtual void OnFlightPlanFlightStripPushed(CFlightPlan FlightPlan,
-                                                          const char *sSenderController,
-                                                          const char *sTargetController) {
+        virtual void OnFlightPlanFlightStripPushed(CFlightPlan FlightPlan,
+                                                   const char* sSenderController,
+                                                   const char* sTargetController) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3061,7 +3060,7 @@ namespace EuroScopePlugIn {
 
         //---OnCompileCommand-----------------------------------------------
 
-        inline virtual bool OnCompileCommand(const char *sCommandLine) {
+        virtual bool OnCompileCommand(const char* sCommandLine) {
             return false;
         };
         //------------------------------------------------------------------
@@ -3083,10 +3082,10 @@ namespace EuroScopePlugIn {
 
         //---OnOverScreenObject---------------------------------------------
 
-        inline virtual void OnOverScreenObject(int ObjectType,
-                                               const char *sObjectId,
-                                               POINT Pt,
-                                               RECT Area) {
+        virtual void OnOverScreenObject(int ObjectType,
+                                        const char* sObjectId,
+                                        POINT Pt,
+                                        RECT Area) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3104,11 +3103,11 @@ namespace EuroScopePlugIn {
 
         //---OnButtonDownScreenObject---------------------------------------
 
-        inline virtual void OnButtonDownScreenObject(int ObjectType,
-                                                     const char *sObjectId,
-                                                     POINT Pt,
-                                                     RECT Area,
-                                                     int Button) {
+        virtual void OnButtonDownScreenObject(int ObjectType,
+                                              const char* sObjectId,
+                                              POINT Pt,
+                                              RECT Area,
+                                              int Button) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3127,11 +3126,11 @@ namespace EuroScopePlugIn {
 
         //---OnButtonUpScreenObject-----------------------------------------
 
-        inline virtual void OnButtonUpScreenObject(int ObjectType,
-                                                   const char *sObjectId,
-                                                   POINT Pt,
-                                                   RECT Area,
-                                                   int Button) {
+        virtual void OnButtonUpScreenObject(int ObjectType,
+                                            const char* sObjectId,
+                                            POINT Pt,
+                                            RECT Area,
+                                            int Button) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3150,11 +3149,11 @@ namespace EuroScopePlugIn {
 
         //---OnClickScreenObject--------------------------------------------
 
-        inline virtual void OnClickScreenObject(int ObjectType,
-                                                const char *sObjectId,
-                                                POINT Pt,
-                                                RECT Area,
-                                                int Button) {
+        virtual void OnClickScreenObject(int ObjectType,
+                                         const char* sObjectId,
+                                         POINT Pt,
+                                         RECT Area,
+                                         int Button) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3173,11 +3172,11 @@ namespace EuroScopePlugIn {
 
         //---OnDoubleClickScreenObject--------------------------------------
 
-        inline virtual void OnDoubleClickScreenObject(int ObjectType,
-                                                      const char *sObjectId,
-                                                      POINT Pt,
-                                                      RECT Area,
-                                                      int Button) {
+        virtual void OnDoubleClickScreenObject(int ObjectType,
+                                               const char* sObjectId,
+                                               POINT Pt,
+                                               RECT Area,
+                                               int Button) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3196,11 +3195,11 @@ namespace EuroScopePlugIn {
 
         //---OnMoveScreenObject---------------------------------------------
 
-        inline virtual void OnMoveScreenObject(int ObjectType,
-                                               const char *sObjectId,
-                                               POINT Pt,
-                                               RECT Area,
-                                               bool Released) {
+        virtual void OnMoveScreenObject(int ObjectType,
+                                        const char* sObjectId,
+                                        POINT Pt,
+                                        RECT Area,
+                                        bool Released) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3223,10 +3222,10 @@ namespace EuroScopePlugIn {
 
         //---OnFunctionCall-------------------------------------------------
 
-        inline virtual void OnFunctionCall(int FunctionId,
-                                           const char *sItemString,
-                                           POINT Pt,
-                                           RECT Area) {
+        virtual void OnFunctionCall(int FunctionId,
+                                    const char* sItemString,
+                                    POINT Pt,
+                                    RECT Area) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3254,7 +3253,7 @@ namespace EuroScopePlugIn {
 
         ESINDEX m_Position;// the currently referenced AC list position
 
-        friend class CPlugInData;
+        friend class ::CPlugInData;
 
         friend class CPlugIn;
 
@@ -3262,21 +3261,21 @@ namespace EuroScopePlugIn {
 
         //---CFlightPlanList-----------------------------------------------
 
-        inline CFlightPlanList(void) {
-            m_Position = NULL;
+        CFlightPlanList() {
+            m_Position = nullptr;
         };
 
 
         //---IsValid-------------------------------------------------------
 
-        inline bool IsValid(void) const {
-            return m_Position != NULL;
+        bool IsValid() const {
+            return m_Position != nullptr;
         };
 
 
         //---GetColumnNumber-----------------------------------------------
 
-        int GetColumnNumber(void);
+        int GetColumnNumber();
         //-----------------------------------------------------------------
         //  Return :
         //      The number of the columns defined so far. It is a good idea
@@ -3287,7 +3286,7 @@ namespace EuroScopePlugIn {
 
         //---DeleteAllColumns----------------------------------------------
 
-        void DeleteAllColumns(void);
+        void DeleteAllColumns();
         //-----------------------------------------------------------------
         //  Description :
         //      It deletes all previous column definitions.
@@ -3296,14 +3295,14 @@ namespace EuroScopePlugIn {
 
         //---AddColumnDefinition-------------------------------------------
 
-        void AddColumnDefinition(const char *sColumnTitle,
+        void AddColumnDefinition(const char* sColumnTitle,
                                  int Width,
                                  bool Centered,
-                                 const char *sItemProvifer,
+                                 const char* sItemProvifer,
                                  int ItemCode,
-                                 const char *sLeftButtonFunctionProvifer,
+                                 const char* sLeftButtonFunctionProvifer,
                                  int LeftButtonFunction,
-                                 const char *sRightButtonFunctionProvifer,
+                                 const char* sRightButtonFunctionProvifer,
                                  int RightButtonFunction);
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3311,17 +3310,17 @@ namespace EuroScopePlugIn {
         //      =>  Width               - width of the column (in chars)
         //      =>  Centered            - indicates centered alignment
         //      =>  sItemProvifer       - TAG item provider for the column; pass
-        //                                NULL or "" for ES built in items
+        //                                nullptr or "" for ES built in items
         //      =>  ItemCode            - the TAG item codes )see above the
         //                                built in codes)
         //      =>  sLeftButtonFunctionProvifer
         //                              - the provider of the left button function
-        //                                (pass NULL, not yet implemented)
+        //                                (pass nullptr, not yet implemented)
         //      =>  LeftButtonFunction  - the left button function (see above
         //                                the built in functions)
         //      =>  sRightButtonFunctionProvifer,
         //                              - the provider of the right button function
-        //                                (pass NULL, not yet implemented)
+        //                                (pass nullptr, not yet implemented)
         //      =>  RightButtonFunction - the right button function (see above
         //                                the built in functions)
         //
@@ -3378,7 +3377,7 @@ namespace EuroScopePlugIn {
         int m_Position;// the currently referenced element position
         int m_ElementType;               // the type of the element
 
-        friend class CPlugInData;
+        friend class ::CPlugInData;
 
         friend class CPlugIn;
 
@@ -3388,7 +3387,7 @@ namespace EuroScopePlugIn {
 
         //---CSectorElement------------------------------------------------
 
-        inline CSectorElement(void) {
+        CSectorElement() {
             m_Position = -1;
             m_ElementType = 0;
         };
@@ -3396,7 +3395,7 @@ namespace EuroScopePlugIn {
 
         //---IsValid-------------------------------------------------------
 
-        inline bool IsValid(void) const {
+        bool IsValid() const {
             return m_Position != -1;
         };
         //-----------------------------------------------------------------
@@ -3411,14 +3410,14 @@ namespace EuroScopePlugIn {
 
         //---GetElementType------------------------------------------------
 
-        inline int GetElementType(void) const {
+        int GetElementType() const {
             return m_ElementType;
         };
 
 
         //---GetName-------------------------------------------------------
 
-        const char *GetName(void) const;
+        const char* GetName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      the name of the element
@@ -3427,7 +3426,7 @@ namespace EuroScopePlugIn {
 
         //---GetPosition---------------------------------------------------
 
-        bool GetPosition(CPosition *pPosition,
+        bool GetPosition(CPosition* pPosition,
                          int Index);
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3448,7 +3447,7 @@ namespace EuroScopePlugIn {
 
         //---GetComponentName----------------------------------------------
 
-        const char *GetComponentName(int Index);
+        const char* GetComponentName(int Index);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  Index       - the index of the required component (star
@@ -3466,7 +3465,7 @@ namespace EuroScopePlugIn {
 
         //---GetFrequency--------------------------------------------------
 
-        double GetFrequency(void) const;
+        double GetFrequency() const;
         //-----------------------------------------------------------------
         //  Return :
         //      the frequency of the VOR, NDB, AIRPORT elements
@@ -3476,7 +3475,7 @@ namespace EuroScopePlugIn {
 
         //---GetRunwayName-------------------------------------------------
 
-        const char *GetRunwayName(int Index) const;
+        const char* GetRunwayName(int Index) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  Index       - 0 or 1
@@ -3510,7 +3509,7 @@ namespace EuroScopePlugIn {
 
         //---GetAirportName------------------------------------------------
 
-        const char *GetAirportName(void) const;
+        const char* GetAirportName() const;
         //-----------------------------------------------------------------
         //  Return :
         //      the name of the airport this element belongs to
@@ -3551,17 +3550,17 @@ namespace EuroScopePlugIn {
 
         friend class CPlugIn;
 
-        friend class CPlugInData;
+        friend class ::CPlugInData;
 
     public:
 
-        inline CGrountToAirChannel(void) {
+        CGrountToAirChannel() {
             m_Index = -1;
         }
 
         //---IsValid-------------------------------------------------------
 
-        inline bool IsValid(void) const {
+        bool IsValid() const {
             return m_Index != -1;
         };
         //-----------------------------------------------------------------
@@ -3576,7 +3575,7 @@ namespace EuroScopePlugIn {
 
         //---GetName-------------------------------------------------------
 
-        const char *GetName(void);
+        const char* GetName();
         //-----------------------------------------------------------------
         //  Return :
         //      The name of the communication channel.
@@ -3585,7 +3584,7 @@ namespace EuroScopePlugIn {
 
         //---GetFrequency--------------------------------------------------
 
-        double GetFrequency(void);
+        double GetFrequency();
         //-----------------------------------------------------------------
         //  Return :
         //      The frequency of the communication channel.
@@ -3594,7 +3593,7 @@ namespace EuroScopePlugIn {
 
         //---GetVoiceServer------------------------------------------------
 
-        const char *GetVoiceServer(void);
+        const char* GetVoiceServer();
         //-----------------------------------------------------------------
         //  Return :
         //      The voice server name of the communication channel.
@@ -3603,7 +3602,7 @@ namespace EuroScopePlugIn {
 
         //---GetVoiceChannel-----------------------------------------------
 
-        const char *GetVoiceChannel(void);
+        const char* GetVoiceChannel();
         //-----------------------------------------------------------------
         //  Return :
         //      The voice server channel name of the communication channel.
@@ -3612,7 +3611,7 @@ namespace EuroScopePlugIn {
 
         //---GetIsPrimary--------------------------------------------------
 
-        bool GetIsPrimary(void);
+        bool GetIsPrimary();
         //-----------------------------------------------------------------
         //  Return :
         //      A flag indicating if the channel is the primary channel.
@@ -3621,7 +3620,7 @@ namespace EuroScopePlugIn {
 
         //---GetIsAtis-----------------------------------------------------
 
-        bool GetIsAtis(void);
+        bool GetIsAtis();
         //-----------------------------------------------------------------
         //  Return :
         //      A flag indicating if the channel is the ATIS channel.
@@ -3630,7 +3629,7 @@ namespace EuroScopePlugIn {
 
         //---GetIsTextReceiveOn--------------------------------------------
 
-        bool GetIsTextReceiveOn(void);
+        bool GetIsTextReceiveOn();
         //-----------------------------------------------------------------
         //  Return :
         //      A flag indicating if the channel is receiving text messages.
@@ -3639,7 +3638,7 @@ namespace EuroScopePlugIn {
 
         //---GetIsTextTransmitOn-------------------------------------------
 
-        bool GetIsTextTransmitOn(void);
+        bool GetIsTextTransmitOn();
         //-----------------------------------------------------------------
         //  Return :
         //      A flag indicating if the channel is transmitting text messages.
@@ -3648,7 +3647,7 @@ namespace EuroScopePlugIn {
 
         //---GetIsVoiceReceiveOn-------------------------------------------
 
-        bool GetIsVoiceReceiveOn(void);
+        bool GetIsVoiceReceiveOn();
         //-----------------------------------------------------------------
         //  Return :
         //      A flag indicating if the channel is receiving voice. This
@@ -3659,7 +3658,7 @@ namespace EuroScopePlugIn {
 
         //---GetIsVoiceTransmitOn------------------------------------------
 
-        bool GetIsVoiceTransmitOn(void);
+        bool GetIsVoiceTransmitOn();
         //-----------------------------------------------------------------
         //  Return :
         //      A flag indicating if the channel is transmitting voice.
@@ -3668,7 +3667,7 @@ namespace EuroScopePlugIn {
 
         //---GetIsVoiceConnected-------------------------------------------
 
-        bool GetIsVoiceConnected(void);
+        bool GetIsVoiceConnected();
         //-----------------------------------------------------------------
         //  Return :
         //      A flag indicating if the channel is successfully connected
@@ -3678,7 +3677,7 @@ namespace EuroScopePlugIn {
 
         //---TogglePrimary-------------------------------------------------
 
-        void TogglePrimary(void);
+        void TogglePrimary();
         //-----------------------------------------------------------------
         //  Description :
         //      It changes the primary setting of the channel (like clicking
@@ -3688,7 +3687,7 @@ namespace EuroScopePlugIn {
 
         //---ToggleAtis----------------------------------------------------
 
-        void ToggleAtis(void);
+        void ToggleAtis();
         //-----------------------------------------------------------------
         //  Description :
         //      It changes the ATIS setting of the channel (like clicking
@@ -3698,7 +3697,7 @@ namespace EuroScopePlugIn {
 
         //---ToggleTextReceive---------------------------------------------
 
-        void ToggleTextReceive(void);
+        void ToggleTextReceive();
         //-----------------------------------------------------------------
         //  Description :
         //      It changes the text receive setting of the channel (like clicking
@@ -3708,7 +3707,7 @@ namespace EuroScopePlugIn {
 
         //---ToggleTextTransmit--------------------------------------------
 
-        void ToggleTextTransmit(void);
+        void ToggleTextTransmit();
         //-----------------------------------------------------------------
         //  Description :
         //      It changes the text transmit setting of the channel (like clicking
@@ -3718,7 +3717,7 @@ namespace EuroScopePlugIn {
 
         //---ToggleVoiceReceive--------------------------------------------
 
-        void ToggleVoiceReceive(void);
+        void ToggleVoiceReceive();
         //-----------------------------------------------------------------
         //  Description :
         //      It changes the voice receive setting of the channel (like clicking
@@ -3728,7 +3727,7 @@ namespace EuroScopePlugIn {
 
         //---ToggleVoiceTransmit-------------------------------------------
 
-        void ToggleVoiceTransmit(void);
+        void ToggleVoiceTransmit();
         //-----------------------------------------------------------------
         //  Description :
         //      It changes the voice transmit setting of the channel (like clicking
@@ -3741,7 +3740,7 @@ namespace EuroScopePlugIn {
     class DllSpecEuroScope CPlugIn {
     private:
 
-        CPlugInData *m_pPluginData;
+        CPlugInData* m_pPluginData;
         // pointer to the internal data structure
 
     public:
@@ -3749,10 +3748,10 @@ namespace EuroScopePlugIn {
         //---CPlugIn-------------------------------------------------------
 
         CPlugIn(int CompatibilityCode,
-                const char *sPlugInName,
-                const char *sVersionNumber,
-                const char *sAuthorName,
-                const char *sCopyrigthMessage);
+                const char* sPlugInName,
+                const char* sVersionNumber,
+                const char* sAuthorName,
+                const char* sCopyrigthMessage);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  CompatibilityCode   - for compatiblity check
@@ -3768,7 +3767,7 @@ namespace EuroScopePlugIn {
 
         //---~CPlugIn------------------------------------------------------
 
-        virtual ~CPlugIn(void);
+        virtual ~CPlugIn();
         //-----------------------------------------------------------------
         //  Description :
         //      The descriptoz. Keep it virtual.
@@ -3777,7 +3776,7 @@ namespace EuroScopePlugIn {
 
         //---OnControllerPositionUpdate------------------------------------
 
-        inline virtual void OnControllerPositionUpdate(CController Controller) {
+        virtual void OnControllerPositionUpdate(CController Controller) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3792,7 +3791,7 @@ namespace EuroScopePlugIn {
 
         //---OnControllerDisconnect----------------------------------------
 
-        inline virtual void OnControllerDisconnect(CController Controller) {
+        virtual void OnControllerDisconnect(CController Controller) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3807,7 +3806,7 @@ namespace EuroScopePlugIn {
 
         //---OnRadarTergetPositionUpdate--------------------------------------
 
-        inline virtual void OnRadarTargetPositionUpdate(CRadarTarget RadarTarget) {
+        virtual void OnRadarTargetPositionUpdate(CRadarTarget RadarTarget) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3822,7 +3821,7 @@ namespace EuroScopePlugIn {
 
         //---OnFlightPlanDisconnect----------------------------------------
 
-        inline virtual void OnFlightPlanDisconnect(CFlightPlan FlightPlan) {
+        virtual void OnFlightPlanDisconnect(CFlightPlan FlightPlan) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3837,7 +3836,7 @@ namespace EuroScopePlugIn {
 
         //---OnFlightPlanFlightPlanDataUpdate------------------------------
 
-        inline virtual void OnFlightPlanFlightPlanDataUpdate(CFlightPlan FlightPlan) {
+        virtual void OnFlightPlanFlightPlanDataUpdate(CFlightPlan FlightPlan) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3852,9 +3851,9 @@ namespace EuroScopePlugIn {
 
         //---OnPlaneInformationUpdate--------------------------------------
 
-        inline virtual void OnPlaneInformationUpdate(const char *sCallsign,
-                                                     const char *sLivery,
-                                                     const char *sPlaneType) {
+        virtual void OnPlaneInformationUpdate(const char* sCallsign,
+                                              const char* sLivery,
+                                              const char* sPlaneType) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3870,8 +3869,8 @@ namespace EuroScopePlugIn {
 
         //---OnFlightPlanControllerAssignedDataUpdate----------------------
 
-        inline virtual void OnFlightPlanControllerAssignedDataUpdate(CFlightPlan FlightPlan,
-                                                                     int DataType) {
+        virtual void OnFlightPlanControllerAssignedDataUpdate(CFlightPlan FlightPlan,
+                                                              int DataType) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3887,9 +3886,9 @@ namespace EuroScopePlugIn {
 
         //---OnFlightPlanFlightStripPushed---------------------------------
 
-        inline virtual void OnFlightPlanFlightStripPushed(CFlightPlan FlightPlan,
-                                                          const char *sSenderController,
-                                                          const char *sTargetController) {
+        virtual void OnFlightPlanFlightStripPushed(CFlightPlan FlightPlan,
+                                                   const char* sSenderController,
+                                                   const char* sTargetController) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3908,12 +3907,12 @@ namespace EuroScopePlugIn {
 
         //---OnRadarScreenCreated------------------------------------------
 
-        inline virtual CRadarScreen *OnRadarScreenCreated(const char *sDisplayName,
-                                                          bool NeedRadarContent,
-                                                          bool GeoReferenced,
-                                                          bool CanBeSaved,
-                                                          bool CanBeCreated) {
-            return NULL;
+        virtual CRadarScreen* OnRadarScreenCreated(const char* sDisplayName,
+                                                   bool NeedRadarContent,
+                                                   bool GeoReferenced,
+                                                   bool CanBeSaved,
+                                                   bool CanBeCreated) {
+            return nullptr;
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -3929,7 +3928,7 @@ namespace EuroScopePlugIn {
         //
         //  Return :
         //      an instance to your own radar scren class member or
-        //      NULL if this type is not handled by your plug-in
+        //      nullptr if this type is not handled by your plug-in
         //
         //  Description :
         //      When a new radar display is opened your plug-in is called
@@ -3942,7 +3941,7 @@ namespace EuroScopePlugIn {
 
         //---OnCompileCommand-----------------------------------------------
 
-        inline virtual bool OnCompileCommand(const char *sCommandLine) {
+        virtual bool OnCompileCommand(const char* sCommandLine) {
             return false;
         };
         //------------------------------------------------------------------
@@ -3963,9 +3962,9 @@ namespace EuroScopePlugIn {
 
         //---OnCompileFrequencyChat-----------------------------------------
 
-        inline virtual void OnCompileFrequencyChat(const char *sSenderCallsign,
-                                                   double Frequency,
-                                                   const char *sChatMessage) {
+        virtual void OnCompileFrequencyChat(const char* sSenderCallsign,
+                                            double Frequency,
+                                            const char* sChatMessage) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -3984,9 +3983,9 @@ namespace EuroScopePlugIn {
 
         //---OnCompilePrivateChat-------------------------------------------
 
-        inline virtual void OnCompilePrivateChat(const char *sSenderCallsign,
-                                                 const char *sReceiverCallsign,
-                                                 const char *sChatMessage) {
+        virtual void OnCompilePrivateChat(const char* sSenderCallsign,
+                                          const char* sReceiverCallsign,
+                                          const char* sChatMessage) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -4006,14 +4005,14 @@ namespace EuroScopePlugIn {
 
         //---OnGetTagItem---------------------------------------------------
 
-        inline virtual void OnGetTagItem(CFlightPlan FlightPlan,
-                                         CRadarTarget RadarTarget,
-                                         int ItemCode,
-                                         int TagData,
-                                         char sItemString[16],
-                                         int *pColorCode,
-                                         COLORREF *pRGB,
-                                         double *pFontSize) {
+        virtual void OnGetTagItem(CFlightPlan FlightPlan,
+                                  CRadarTarget RadarTarget,
+                                  int ItemCode,
+                                  int TagData,
+                                  char sItemString[16],
+                                  int* pColorCode,
+                                  COLORREF* pRGB,
+                                  double* pFontSize) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4047,7 +4046,7 @@ namespace EuroScopePlugIn {
 
         //---OnRefreshFpListContent----------------------------------------
 
-        inline virtual void OnRefreshFpListContent(CFlightPlanList AcList) {
+        virtual void OnRefreshFpListContent(CFlightPlanList AcList) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4063,8 +4062,8 @@ namespace EuroScopePlugIn {
 
         //---OnNewMetarReceived--------------------------------------------
 
-        inline virtual void OnNewMetarReceived(const char *sStation,
-                                               const char *sFullMetar) {
+        virtual void OnNewMetarReceived(const char* sStation,
+                                        const char* sFullMetar) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4079,10 +4078,10 @@ namespace EuroScopePlugIn {
 
         //---OnFunctionCall-------------------------------------------------
 
-        inline virtual void OnFunctionCall(int FunctionId,
-                                           const char *sItemString,
-                                           POINT Pt,
-                                           RECT Area) {
+        virtual void OnFunctionCall(int FunctionId,
+                                    const char* sItemString,
+                                    POINT Pt,
+                                    RECT Area) {
         };
         //------------------------------------------------------------------
         //  Parameters :
@@ -4104,7 +4103,7 @@ namespace EuroScopePlugIn {
 
         //---OnAirportRunwayActivityChanged---------------------------------
 
-        inline virtual void OnAirportRunwayActivityChanged(void) {
+        virtual void OnAirportRunwayActivityChanged() {
         };
         //-----------------------------------------------------------------
         //  Description :
@@ -4115,7 +4114,7 @@ namespace EuroScopePlugIn {
 
         //---OnAirportRunwayActivityChanged---------------------------------
 
-        inline virtual void OnTimer(int Counter) {
+        virtual void OnTimer(int Counter) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4130,7 +4129,7 @@ namespace EuroScopePlugIn {
 
         //---GetPlugInName-------------------------------------------------
 
-        const char *GetPlugInName(void);
+        const char* GetPlugInName();
         //-----------------------------------------------------------------
         //  Return :
         //      the plugin name.
@@ -4139,7 +4138,7 @@ namespace EuroScopePlugIn {
 
         //---RegisterDisplayType-------------------------------------------
 
-        void RegisterDisplayType(const char *sDisplayName,
+        void RegisterDisplayType(const char* sDisplayName,
                                  bool NeedRadarContent,
                                  bool GeoReferenced,
                                  bool CanBeSaved,
@@ -4167,7 +4166,7 @@ namespace EuroScopePlugIn {
 
         //---RegisterTagItemType-------------------------------------------
 
-        void RegisterTagItemType(const char *sDisplayName,
+        void RegisterTagItemType(const char* sDisplayName,
                                  int Code);
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4181,7 +4180,7 @@ namespace EuroScopePlugIn {
 
         //---RegisterTagItemFunction---------------------------------------
 
-        void RegisterTagItemFunction(const char *sDisplayName,
+        void RegisterTagItemFunction(const char* sDisplayName,
                                      int Code);
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4195,7 +4194,7 @@ namespace EuroScopePlugIn {
 
         //---RegisterFpList------------------------------------------------
 
-        CFlightPlanList RegisterFpList(const char *sListName);
+        CFlightPlanList RegisterFpList(const char* sListName);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sListName   - the name of the list box
@@ -4212,7 +4211,7 @@ namespace EuroScopePlugIn {
         //---RegisterToolbarItem-------------------------------------------
 
         void RegisterToolbarItem(int ItemId,
-                                 const char *sItemName);
+                                 const char* sItemName);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  ItemId      - the ID of the toolbar item
@@ -4240,16 +4239,16 @@ namespace EuroScopePlugIn {
 
         //---SaveDataToSettings--------------------------------------------
 
-        void SaveDataToSettings(const char *sVariableName,
-                                const char *sVariableDescription,
-                                const char *sValue);
+        void SaveDataToSettings(const char* sVariableName,
+                                const char* sVariableDescription,
+                                const char* sValue);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sVariableName       - the name under your value will be saved
         //      =>  sVariableDescription- a user readable name of the variable;
         //                                this value will be shown in the
         //                                save modified settings dialog; if
-        //                                empty (never pass NULL), then it
+        //                                empty (never pass nullptr), then it
         //                                will not be shown
         //      =>  sValue              - the value itself to be stored; it
         //                                may contain only printable chars and
@@ -4262,14 +4261,14 @@ namespace EuroScopePlugIn {
 
         //---GetDataFromSettings-------------------------------------------
 
-        const char *GetDataFromSettings(const char *sVariableName);
+        const char* GetDataFromSettings(const char* sVariableName);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sVariableName       - the name under your value was saved
         //
         //  Return :
         //      the value found in the ASR or
-        //      NULL if not found
+        //      nullptr if not found
         //
         //  Description :
         //      It loads the value for the plug in from the settings file.
@@ -4280,7 +4279,7 @@ namespace EuroScopePlugIn {
 
         void OpenPopupEdit(RECT Area,
                            int FunctionId,
-                           const char *sInitialValue);
+                           const char* sInitialValue);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  Area            - the rectangle where the edit box
@@ -4301,7 +4300,7 @@ namespace EuroScopePlugIn {
         //---OpenPopupList-------------------------------------------------
 
         void OpenPopupList(RECT Area,
-                           const char *sTitle,
+                           const char* sTitle,
                            int ColumnNumber);
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4321,8 +4320,8 @@ namespace EuroScopePlugIn {
 
         //---AddPopupListElement-------------------------------------------
 
-        void AddPopupListElement(const char *sString1,
-                                 const char *sString2,
+        void AddPopupListElement(const char* sString1,
+                                 const char* sString2,
                                  int FunctionId,
                                  bool Selected = false,
                                  int Checked = POPUP_ELEMENT_NO_CHECKBOX,
@@ -4356,7 +4355,7 @@ namespace EuroScopePlugIn {
 
         //---GetConnectionType---------------------------------------------
 
-        int GetConnectionType(void) const;
+        int GetConnectionType() const;
         //-----------------------------------------------------------------
         //  Return :
         //      the actual connection type - on of CONNECTION_TYPE_...
@@ -4365,7 +4364,7 @@ namespace EuroScopePlugIn {
 
         //---SelectActiveSectorfile----------------------------------------
 
-        void SelectActiveSectorfile(void);
+        void SelectActiveSectorfile();
         //-----------------------------------------------------------------
         //  Description :
         //      It selects the active sectorfile as the source for the
@@ -4375,7 +4374,7 @@ namespace EuroScopePlugIn {
 
         //---SelectScreenSectorfile----------------------------------------
 
-        void SelectScreenSectorfile(CRadarScreen *pRadarScreen);
+        void SelectScreenSectorfile(CRadarScreen* pRadarScreen);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  pRadarScreen    - the screen reference
@@ -4403,7 +4402,7 @@ namespace EuroScopePlugIn {
 
         //---FlightPlanSelect----------------------------------------------
 
-        CFlightPlan FlightPlanSelect(const char *sCallsign) const;
+        CFlightPlan FlightPlanSelect(const char* sCallsign) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sCallsign   - the callsign of the FP to be selected
@@ -4424,7 +4423,7 @@ namespace EuroScopePlugIn {
 
         //---RadarTargetSelect---------------------------------------------
 
-        CRadarTarget RadarTargetSelect(const char *sCallsign) const;
+        CRadarTarget RadarTargetSelect(const char* sCallsign) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sCallsign   - the callsign of the RT to be selected
@@ -4446,7 +4445,7 @@ namespace EuroScopePlugIn {
 
         //---FlightPlanSelectFirst-----------------------------------------
 
-        CFlightPlan FlightPlanSelectFirst(void) const;
+        CFlightPlan FlightPlanSelectFirst() const;
         //-----------------------------------------------------------------
         //  Return :
         //      An flight plan object instance.
@@ -4464,7 +4463,7 @@ namespace EuroScopePlugIn {
 
         //---RadarTargetSelectFirst----------------------------------------
 
-        CRadarTarget RadarTargetSelectFirst(void) const;
+        CRadarTarget RadarTargetSelectFirst() const;
         //-----------------------------------------------------------------
         //  Return :
         //      An radar target object instance.
@@ -4524,7 +4523,7 @@ namespace EuroScopePlugIn {
 
         //---FlightPlanSelectASEL------------------------------------------
 
-        CFlightPlan FlightPlanSelectASEL(void) const;
+        CFlightPlan FlightPlanSelectASEL() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A flight plan object instance. May be invalid.
@@ -4542,7 +4541,7 @@ namespace EuroScopePlugIn {
 
         //---RadarTargetSelectASEL-----------------------------------------
 
-        CRadarTarget RadarTargetSelectASEL(void) const;
+        CRadarTarget RadarTargetSelectASEL() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A radar target object instance. May be invalid.
@@ -4560,7 +4559,7 @@ namespace EuroScopePlugIn {
 
         //---ControllerSelect----------------------------------------------
 
-        CController ControllerSelect(const char *sCallsign) const;
+        CController ControllerSelect(const char* sCallsign) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sCallsign   - the callsign of the controller to be selected
@@ -4581,7 +4580,7 @@ namespace EuroScopePlugIn {
 
         //---ControllerSelectByPositionId----------------------------------
 
-        CController ControllerSelectByPositionId(const char *sPositionId) const;
+        CController ControllerSelectByPositionId(const char* sPositionId) const;
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sPositionId - the position ID of the controller to be selected
@@ -4602,7 +4601,7 @@ namespace EuroScopePlugIn {
 
         //---ControllerMyself----------------------------------------------
 
-        CController ControllerMyself(void) const;
+        CController ControllerMyself() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A controller object instance.
@@ -4620,7 +4619,7 @@ namespace EuroScopePlugIn {
 
         //---ControllerSelectFirst-----------------------------------------
 
-        CController ControllerSelectFirst(void) const;
+        CController ControllerSelectFirst() const;
         //-----------------------------------------------------------------
         //  Return :
         //      A controller object instance.
@@ -4709,9 +4708,9 @@ namespace EuroScopePlugIn {
 
         //---DisplayUserMessage--------------------------------------------
 
-        void DisplayUserMessage(const char *sHandlerName,
-                                const char *sSenderName,
-                                const char *sMessage,
+        void DisplayUserMessage(const char* sHandlerName,
+                                const char* sSenderName,
+                                const char* sMessage,
                                 bool ShowHandler,
                                 bool ShowUnread,
                                 bool ShowUnreadEvenIfBusy,
@@ -4742,7 +4741,7 @@ namespace EuroScopePlugIn {
 
         //---GroundToArChannelSelectFirst----------------------------------
 
-        CGrountToAirChannel GroundToArChannelSelectFirst(void);
+        CGrountToAirChannel GroundToArChannelSelectFirst();
         //-----------------------------------------------------------------
         //  Return :
         //      The first channel defined in the Voice Communication Setup
@@ -4767,8 +4766,8 @@ namespace EuroScopePlugIn {
 
         //---AddAlias------------------------------------------------------
 
-        void AddAlias(const char *sAliasName,
-                      const char *sAliasValue);
+        void AddAlias(const char* sAliasName,
+                      const char* sAliasValue);
         //-----------------------------------------------------------------
         //  Parameters :
         //      =>  sAliasName  - the alias name (must begin with .)
@@ -4781,7 +4780,7 @@ namespace EuroScopePlugIn {
 
         //---OnVoiceTransmitStarted----------------------------------------
 
-        inline virtual void OnVoiceTransmitStarted(bool OnPrimary) {
+        virtual void OnVoiceTransmitStarted(bool OnPrimary) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4797,7 +4796,7 @@ namespace EuroScopePlugIn {
 
         //---OnVoiceTransmitEnded------------------------------------------
 
-        inline virtual void OnVoiceTransmitEnded(bool OnPrimary) {
+        virtual void OnVoiceTransmitEnded(bool OnPrimary) {
         };
         //-----------------------------------------------------------------
         //      =>  OnPrimary   - indicates if the transmit ended on the
@@ -4812,7 +4811,7 @@ namespace EuroScopePlugIn {
 
         //---OnVoiceReceiveStarted-----------------------------------------
 
-        inline virtual void OnVoiceReceiveStarted(CGrountToAirChannel Channel) {
+        virtual void OnVoiceReceiveStarted(CGrountToAirChannel Channel) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4825,7 +4824,7 @@ namespace EuroScopePlugIn {
 
         //---OnVoiceReceiveEnded-------------------------------------------
 
-        inline virtual void OnVoiceReceiveEnded(CGrountToAirChannel Channel) {
+        virtual void OnVoiceReceiveEnded(CGrountToAirChannel Channel) {
         };
         //-----------------------------------------------------------------
         //  Parameters :
@@ -4838,7 +4837,7 @@ namespace EuroScopePlugIn {
 
         //---GetTransitionAltitude-----------------------------------------
 
-        int GetTransitionAltitude(void);
+        int GetTransitionAltitude();
         //-----------------------------------------------------------------
         //  Return :
         //      The transition altitude of the system.
@@ -4851,7 +4850,7 @@ namespace EuroScopePlugIn {
 
 //---EuroScopePlugInInit-----------------------------------------------
 
-void __declspec ( dllexport ) EuroScopePlugInInit(EuroScopePlugIn::CPlugIn **ppPlugInInstance);
+void __declspec ( dllexport ) EuroScopePlugInInit(EuroScopePlugIn::CPlugIn** ppPlugInInstance);
 //---------------------------------------------------------------------
 //  Parameters :
 //      <=  ppPlugInInstance- a pointer to the plug-in instance
@@ -4870,7 +4869,7 @@ void __declspec ( dllexport ) EuroScopePlugInInit(EuroScopePlugIn::CPlugIn **ppP
 
 //---EuroScopePlugInExit-----------------------------------------------
 
-void __declspec ( dllexport ) EuroScopePlugInExit(void);
+void __declspec ( dllexport ) EuroScopePlugInExit();
 //---------------------------------------------------------------------
 //  Description :
 //      Every plugin have to implement this function. When EuroScope

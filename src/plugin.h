@@ -36,6 +36,6 @@ private:
     /// Returns the number of aircraft synced.
     uint32_t sync(const std::string& airport);
 
-    /// The GroundRadar plugin states are not being tracked by EuroScope, so we need to keep track of them ourselves.
-    std::unordered_map<std::string, status::Status> status;
+    /// The GroundRadar plugin states are not being tracked by EuroScope, so we need to keep track of all status changes ourselves.
+    std::unordered_map<std::string, status::Status> statuses;
 };

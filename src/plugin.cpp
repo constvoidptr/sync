@@ -13,15 +13,15 @@ const char* HELP_MSG = "Usage: .sync <Airport ICAO> (e.g. .sync LOWW).";
 /// Filter out aircraft that are not on the ground at the specified airport.
 /// Returns true if we should keep the aircraft, false otherwise.
 bool filter(const std::string& airport, const EuroScopePlugIn::CFlightPlan& flight_plan) {
-    auto flight_plan_data = flight_plan.GetFlightPlanData();
+    EuroScopePlugIn::CFlightPlanData flight_plan_data = flight_plan.GetFlightPlanData();
     if (flight_plan_data.GetOrigin() != airport)
         return false;
 
     if (flight_plan.GetDistanceFromOrigin() > 5.0)
         return false;
 
-    // Check ground speed less than 60 knots
-    auto target = flight_plan.GetCorrelatedRadarTarget();
+    // Filter out aircraft that are not on the ground
+    EuroScopePlugIn::CRadarTarget target = flight_plan.GetCorrelatedRadarTarget();
     if (!target.IsValid())
         return false;
 
@@ -35,6 +35,7 @@ bool filter(const std::string& airport, const EuroScopePlugIn::CFlightPlan& flig
     return true;
 }
 
+// Plugin singleton :(
 static Plugin* INSTANCE = nullptr;
 
 Plugin& Plugin::instance() {
@@ -65,6 +66,7 @@ void Plugin::println(const std::string& msg) {
 }
 
 bool Plugin::OnCompileCommand(const char* sCommandLine) {
+    // Command parsing
     std::vector<std::string> args;
     std::istringstream stream(sCommandLine);
     for (std::string arg; std::getline(stream, arg, ' ');) {
@@ -84,23 +86,24 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
     }
 
     if (args[1] == "debug") {
-        println(std::format("Number of stored statuses: {}", this->status.size()));
+        println(std::format("Number of stored statuses: {}", this->statuses.size()));
         return true;
     }
 
     if (args[1] == "clear") {
         println("Clearing out stored statuses.");
-        this->status.clear();
+        this->statuses.clear();
         return true;
     }
 
+    // Convert the airport to uppercase
     std::string airport = args[1];
     if (airport.size() != 4)
         return false;
     std::transform(airport.begin(), airport.end(), airport.begin(), ::toupper);
 
+    // Sync the aircraft
     uint32_t num_synced = sync(airport);
-
     println(std::format("Synced {} aircraft in {}", num_synced, airport));
 
     return true;
@@ -109,7 +112,7 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
 void Plugin::OnFlightPlanControllerAssignedDataUpdate(EuroScopePlugIn::CFlightPlan FlightPlan, int DataType) {
     using status::Status;
 
-    std::optional<Status> parsed_status = std::nullopt;
+    std::optional<Status> parsed_status;
     switch (DataType) {
         case EuroScopePlugIn::CTR_DATA_TYPE_SCRATCH_PAD_STRING:
             parsed_status = status::try_from(FlightPlan.GetControllerAssignedData().GetScratchPadString());
@@ -123,17 +126,17 @@ void Plugin::OnFlightPlanControllerAssignedDataUpdate(EuroScopePlugIn::CFlightPl
 
     if (std::optional<Status> s = parsed_status) {
         if (*s == Status::NoState) {
-            this->status.erase(FlightPlan.GetCallsign());
+            this->statuses.erase(FlightPlan.GetCallsign());
             return;
         }
 
-        this->status.insert_or_assign(FlightPlan.GetCallsign(), *s);
+        this->statuses.insert_or_assign(FlightPlan.GetCallsign(), *s);
     }
 }
 
 void Plugin::OnFlightPlanDisconnect(EuroScopePlugIn::CFlightPlan FlightPlan) {
     // Remove the status of the aircraft when it disconnects or is out of range.
-    this->status.erase(FlightPlan.GetCallsign());
+    this->statuses.erase(FlightPlan.GetCallsign());
 }
 
 uint32_t Plugin::sync(const std::string& airport) {
@@ -145,22 +148,24 @@ uint32_t Plugin::sync(const std::string& airport) {
             continue;
 
         bool modified = false;
-        auto assigned = flight_plan.GetControllerAssignedData();
-        auto cached_scratch_pad = assigned.GetScratchPadString();
+        EuroScopePlugIn::CFlightPlanControllerAssignedData assigned = flight_plan.GetControllerAssignedData();
+        std::string scratch_pad_backup = assigned.GetScratchPadString();
 
+        // Sync clearance received flag
         if (flight_plan.GetClearenceFlag()) {
             assigned.SetScratchPadString("CLEA");
             modified = true;
         }
 
-        auto status = this->status.find(flight_plan.GetCallsign());
-        if (status != this->status.end()) {
+        // Sync status
+        if (auto status = this->statuses.find(flight_plan.GetCallsign()); status != this->statuses.end()) {
             assigned.SetScratchPadString(status::to_string(status->second).c_str());
             modified = true;
         }
 
+        // Restore the scratch pad if we modified it
         if (modified) {
-            assigned.SetScratchPadString(cached_scratch_pad);
+            assigned.SetScratchPadString(scratch_pad_backup.c_str());
             num_synced += 1;
         }
     }

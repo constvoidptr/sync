@@ -6,7 +6,7 @@
 #include <optional>
 #include <string>
 
-namespace status {
+namespace tracked {
     enum class Status {
         NoState,
         OnFreq,
@@ -18,7 +18,19 @@ namespace status {
         Takeoff,
     };
 
-    std::optional<Status> try_from(const std::string& status);
-
+    std::optional<Status> status_try_from(const std::string& value);
     std::string to_string(const Status& status);
+
+    enum class Clearance {
+        Cleared,
+        NotCleared,
+    };
+
+    std::optional<Clearance> clearance_try_from(const std::string& value);
+    std::string to_string(const Clearance& status);
+
+    struct Tracked {
+        bool cleared = false;
+        std::optional<Status> status = std::nullopt;
+    };
 }

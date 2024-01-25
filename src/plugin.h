@@ -4,7 +4,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "status.h"
+#include "tracked.h"
 
 const std::string PLUGIN_NAME = "Sync";
 const std::string PLUGIN_VERSION = "1.0.0";
@@ -37,5 +37,5 @@ private:
     uint32_t sync(const std::string& airport);
 
     /// The GroundRadar plugin states are not being tracked by EuroScope, so we need to keep track of all status changes ourselves.
-    std::unordered_map<std::string, status::Status> statuses;
+    std::unordered_map<std::string, tracked::Tracked> tracked;
 };

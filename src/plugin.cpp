@@ -86,13 +86,13 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
     }
 
     if (args[1] == "debug") {
-        println(std::format("Number of stored statuses: {}", this->statuses.size()));
+        println(std::format("Number of stored statuses: {}", this->tracked.size()));
         return true;
     }
 
     if (args[1] == "clear") {
         println("Clearing out stored statuses.");
-        this->statuses.clear();
+        this->tracked.clear();
         return true;
     }
 
@@ -110,33 +110,41 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
 }
 
 void Plugin::OnFlightPlanControllerAssignedDataUpdate(EuroScopePlugIn::CFlightPlan FlightPlan, int DataType) {
-    using status::Status;
+    using tracked::Status;
 
-    std::optional<Status> parsed_status;
+    std::optional<bool> opt_cleared;
+    std::optional<Status> opt_status;
     switch (DataType) {
+        case EuroScopePlugIn::CTR_DATA_TYPE_CLEARENCE_FLAG:
+            opt_cleared = FlightPlan.GetClearenceFlag();
+            break;
         case EuroScopePlugIn::CTR_DATA_TYPE_SCRATCH_PAD_STRING:
-            parsed_status = status::try_from(FlightPlan.GetControllerAssignedData().GetScratchPadString());
+            opt_status = tracked::status_try_from(FlightPlan.GetControllerAssignedData().GetScratchPadString());
             break;
         case EuroScopePlugIn::CTR_DATA_TYPE_GROUND_STATE:
-            parsed_status = status::try_from(FlightPlan.GetGroundState());
+            opt_status = tracked::status_try_from(FlightPlan.GetGroundState());
             break;
         default:
             return;
     }
 
-    if (std::optional<Status> s = parsed_status) {
-        if (*s == Status::NoState) {
-            this->statuses.erase(FlightPlan.GetCallsign());
-            return;
-        }
+    auto it = this->tracked.find(FlightPlan.GetCallsign());
+    if (it == this->tracked.end())
+        it = this->tracked.insert({FlightPlan.GetCallsign(), tracked::Tracked{}}).first;
 
-        this->statuses.insert_or_assign(FlightPlan.GetCallsign(), *s);
-    }
+    if (std::optional<bool> cleared = opt_cleared)
+        it->second.cleared = *cleared;
+
+    if (std::optional<Status> status = opt_status)
+        it->second.status = *status;
+
+    if (!it->second.cleared && it->second.status.value_or(Status::NoState) == Status::NoState)
+        this->tracked.erase(it);
 }
 
 void Plugin::OnFlightPlanDisconnect(EuroScopePlugIn::CFlightPlan FlightPlan) {
     // Remove the status of the aircraft when it disconnects or is out of range.
-    this->statuses.erase(FlightPlan.GetCallsign());
+    this->tracked.erase(FlightPlan.GetCallsign());
 }
 
 uint32_t Plugin::sync(const std::string& airport) {
@@ -147,27 +155,24 @@ uint32_t Plugin::sync(const std::string& airport) {
         if (!filter(airport, flight_plan))
             continue;
 
-        bool modified = false;
         EuroScopePlugIn::CFlightPlanControllerAssignedData assigned = flight_plan.GetControllerAssignedData();
         std::string scratch_pad_backup = assigned.GetScratchPadString();
 
-        // Sync clearance received flag
-        if (flight_plan.GetClearenceFlag()) {
-            assigned.SetScratchPadString("CLEA");
-            modified = true;
-        }
+        auto it = this->tracked.find(flight_plan.GetCallsign());
+        if (it == this->tracked.end())
+            continue;
+
+        // Sync clearance received flag; fall back to the flight plan's flag if we don't have a stored value.
+        if (it->second.cleared || flight_plan.GetClearenceFlag())
+            assigned.SetScratchPadString(tracked::to_string(tracked::Clearance::Cleared).c_str());
 
         // Sync status
-        if (auto status = this->statuses.find(flight_plan.GetCallsign()); status != this->statuses.end()) {
-            assigned.SetScratchPadString(status::to_string(status->second).c_str());
-            modified = true;
-        }
+        if (std::optional<tracked::Status> status = it->second.status)
+            assigned.SetScratchPadString(tracked::to_string(*status).c_str());
 
-        // Restore the scratch pad if we modified it
-        if (modified) {
-            assigned.SetScratchPadString(scratch_pad_backup.c_str());
-            num_synced += 1;
-        }
+        // Restore the scratch pad
+        assigned.SetScratchPadString(scratch_pad_backup.c_str());
+        num_synced += 1;
     }
 
     return num_synced;

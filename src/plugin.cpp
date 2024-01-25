@@ -86,7 +86,7 @@ bool Plugin::OnCompileCommand(const char* sCommandLine) {
     }
 
     if (args[1] == "debug") {
-        println(std::format("Number of stored statuses: {}", this->tracked.size()));
+        println(std::format("Number of tracked aircraft: {}", this->tracked.size()));
         return true;
     }
 

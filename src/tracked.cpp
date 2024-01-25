@@ -7,9 +7,11 @@ namespace tracked {
         if (value == "DE-ICE") return Status::Stby;
         if (value == "ST-UP" || value == "STUP") return Status::Stup;
         if (value == "PUSH") return Status::Push;
-        if (value == "TAXI" || value == "TXIN") return Status::Taxi;
+        if (value == "TAXI") return Status::Taxi;
         if (value == "LINEUP") return Status::Lineup;
         if (value == "DEPA") return Status::Takeoff;
+        if (value == "TXIN") return Status::TaxiIn;
+        if (value == "PARK") return Status::Parked;
         return std::nullopt;
     }
 
@@ -31,6 +33,10 @@ namespace tracked {
                 return "LINEUP";
             case Status::Takeoff:
                 return "DEPA";
+            case Status::TaxiIn:
+                return "TXIN";
+            case Status::Parked:
+                return "PARK";
         }
 
         // This should never be reached

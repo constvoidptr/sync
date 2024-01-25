@@ -16,6 +16,8 @@ namespace tracked {
         Taxi,
         Lineup,
         Takeoff,
+        TaxiIn,
+        Parked,
     };
 
     std::optional<Status> status_try_from(const std::string& value);
